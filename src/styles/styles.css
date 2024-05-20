@@ -1,7 +1,28 @@
 /* UNIVERSIELLE STYLES */
 :root {
-    --primary-color: #FFFDF9;
-    --secondary-color: #262523;
-    --accent-color: #D94625;
-    --secondary-accent: #3C4E5A;
+  --primary-color: #fffdf9;
+  --secondary-color: #262523;
+  --accent-color: #d94625;
+  --secondary-accent: #3c4e5a;
+}
+
+:root {
+  --font-family-primary: "futura-pt-condensed", sans-serif;
+  --font-family-secondary: "itc-avant-garde-gothic-pro", sans-serif;
+  --font-family-tertiary: "puffin-arcade-liquid", sans-serif;
+
+  --font-size-xs: 0.88rem; /*14px - footer*/
+  --font-size-sm: 1rem; /*16p - brødtekst,p*/
+  --font-size-md: 1.13rem; /*18px - button header*/
+  --font-size-lg: 2.25rem; /*36px - til sekundær button og h2*/
+  --font-size-xl: 3rem; /*48px -h1*/
+
+  --line-height-base: 1.5;
+
+  --color-primary: #333;
+  --color-secondary: #555;
+
+  --font-weight-bold: 800; /*futura*/
+  --font-weight-regular: 500; /*lille overskrift*/
+  --font-weight-light: 300; /*itc avant garde brødetekst*/
 }
