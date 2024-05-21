@@ -1,0 +1,34 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="container">
+  <img src="images/heroimg-index.avif" alt="" />
+  <div class="knapper">
+    <Button tekst="Om os" />
+    <Button tekst="Events" />
+  </div>
+</div>
+<style>
+  .container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    grid-column: 1;
+    grid-row: 1/3;
+  }
+
+  .knapper {
+    grid-row: 2/3;
+    grid-column: 1;
+    display: flex;
+    flex-direction: row;
+    column-gap: 200px;
+  }
+</style>
