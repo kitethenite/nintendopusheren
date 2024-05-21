@@ -1,0 +1,33 @@
+---
+import WaitlistButton from "../components/WaitlistButton.astro";
+const titel = Astro.props;
+import Email from "../components/Email.astro";
+---
+
+<article class="container">
+  <h3>{titel}</h3>
+  <p>Tilmeld dig for at få besked når produktet er tilbage på lager.</p>
+  <Email />
+  <WaitlistButton />
+</article>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px;
+    width: 24rem;
+    height: 18rem;
+  }
+  h3 {
+    margin-left: 25px;
+    align-self: flex-start;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+  }
+
+  p {
+    width: 20.6rem;
+  }
+</style>
