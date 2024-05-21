@@ -1,0 +1,30 @@
+---
+const { tekst } = Astro.props;
+---
+
+<button>
+  <img src="images/button.svg" alt="" />
+  <a href="#">{tekst}</a>
+</button>
+
+<style>
+  button {
+    background-color: transparent;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  img {
+    grid-area: 1/1;
+  }
+
+  a {
+    color: var(  --accent-color);
+    grid-area: 1/1;
+    text-decoration: none;
+    font-family: var(--font-family-tertiary);
+    font-size: var(--font-size-lg);
+  }
+</style>
