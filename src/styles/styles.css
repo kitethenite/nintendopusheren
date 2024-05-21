@@ -24,3 +24,19 @@
   --font-weight-regular: 500; /*lille overskrift*/
   --font-weight-light: 300; /*itc avant garde brødetekst*/
 }
+
+h1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+}
+
+p {
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-sm);
+}
+
+h2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+}
