@@ -1,0 +1,103 @@
+---
+
+---
+
+<article>
+  <section class="Box">
+    <h3>Beskrivelse</h3>
+    <p class="decription">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut modi,
+      veniam maiores maxime sit repudiandae amet tenetur voluptatum id eum quis
+      reprehenderit? Corrupti fugit dicta animi, soluta aperiam ipsum!
+    </p>
+    <button>
+      <span></span>
+      <span></span>
+    </button>
+  </section>
+
+  <section class="Box">
+    <h3>Specifikationer</h3>
+    <div>
+      <h4 class="condition">Condition</h4>
+      <p class="condition_desc">Lorem Ipsum</p>
+    </div>
+    <div>
+      <h4 class="created_at">Created At</h4>
+      <p class="created_at_desc">Lorem Ipsum</p>
+    </div>
+    <div>
+      <h4 class="country_origin">Country Origin</h4>
+      <p class="country_origin_desc">Lorem Ipsum</p>
+    </div>
+    <div>
+      <h4 class="game_condition">Game Condition</h4>
+      <p class="game_condition_desc">Lorem Ipsum</p>
+    </div>
+    <div></div>
+    <button>
+      <span></span>
+      <span></span>
+    </button>
+  </section>
+</article>
+
+<style>
+  article {
+    display: inline-block;
+  }
+  .Box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #262523;
+    border-top: 1px solid #262523;
+  }
+  .specificationBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #262523;
+  }
+  button {
+    grid-area: 1/2/1/2;
+    place-self: start end;
+    color: #262523;
+    background: #fffdf9;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    font-size: 1.5em;
+    position: relative;
+  }
+
+  button span {
+    position: absolute;
+    transition: 300ms;
+    background: #262523;
+  }
+
+  /* Create the "+" shape by positioning the spans absolutely */
+  button span:first-child {
+    top: 20%;
+    bottom: 25%;
+    width: 1px;
+    left: 50%;
+  }
+
+  button span:last-child {
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    top: 45%;
+  }
+
+  /* Morph the shape when the button is hovered over */
+  button:hover span {
+    transform: rotate(90deg);
+  }
+
+  button:hover span:last-child {
+    left: 50%;
+    right: 50%;
+  }
+</style>
