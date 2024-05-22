@@ -1,0 +1,21 @@
+---
+import Sidebutton from "./Sidebutton.astro";
+---
+
+<section>
+  <Sidebutton tal="←" />
+  <Sidebutton tal="1" />
+  <Sidebutton tal="2" />
+  <Sidebutton tal="3" />
+  <Sidebutton tal="4" />
+  <Sidebutton tal="→" />
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+  }
+</style>
+
