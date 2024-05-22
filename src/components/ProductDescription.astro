@@ -1,56 +1,66 @@
 ---
 
 ---
+
 <script>
-    let description = document.querySelector(".description"); 
-    let button = document.querySelector("button");
+  let showDescriptionBtn = document.querySelector("#showDescription");
+  let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
+  let descriptionContent = document.querySelector("#descriptionContent");
+  let specificationContent = document.querySelector("#specificationContent");
 
-    function clickDescription(){
-        console.log("click");
-        button.addEventListener("click", OpenDescription)
-    }
+  showDescriptionBtn.addEventListener("click", () => {
+    descriptionContent.classList.toggle("hide");
+    descriptionContent.classList.toggle("show");
+    showDescriptionBtn.classList.toggle("collapse");
+});
 
-    function OpenDescription(){
-        console.log("click");
-        description.classList.add(".hide")
-        
-    }
- </script>
+showSpecificationsBtn.addEventListener("click", () => {
+    specificationContent.classList.toggle("hide");
+    specificationContent.classList.toggle("show");
+    showSpecificationsBtn.classList.toggle("collapse");
+  });
+</script>
 
 <article>
-  <section class="Box">
+  <h2>ProductName</h2>
+  <img src="#" alt="Add Image here" />
+</article>
+<article>
+  <section class="descriptionBox">
     <h3>Beskrivelse</h3>
-    <p class="decription">
+    <p id="descriptionContent" class="hide">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut modi,
       veniam maiores maxime sit repudiandae amet tenetur voluptatum id eum quis
       reprehenderit? Corrupti fugit dicta animi, soluta aperiam ipsum!
     </p>
-    <button>
+    <button id="showDescription" class="DescBtn">
       <span></span>
       <span></span>
     </button>
   </section>
-
-  <section class="Box">
+  <section class="specificationRow">
     <h3>Specifikationer</h3>
-    <div>
-      <h4 class="condition">Condition</h4>
-      <p class="condition_desc">Lorem Ipsum</p>
+    <div id="specificationContent" class="hide">
+      <div class="specificationBox">
+        <div>
+          <h4 class="condition">Condition</h4>
+          <p class="condition_desc">Lorem Ipsum</p>
+        </div>
+        <div>
+          <h4 class="created_at">Created At</h4>
+          <p class="created_at_desc">Lorem Ipsum</p>
+        </div>
+        <div>
+          <h4 class="country_origin">Country Origin</h4>
+          <p class="country_origin_desc">Lorem Ipsum</p>
+        </div>
+        <div>
+          <h4 class="game_condition">Game Condition</h4>
+          <p class="game_condition_desc">Lorem Ipsum</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4 class="created_at">Created At</h4>
-      <p class="created_at_desc">Lorem Ipsum</p>
-    </div>
-    <div>
-      <h4 class="country_origin">Country Origin</h4>
-      <p class="country_origin_desc">Lorem Ipsum</p>
-    </div>
-    <div>
-      <h4 class="game_condition">Game Condition</h4>
-      <p class="game_condition_desc">Lorem Ipsum</p>
-    </div>
-    <div></div>
-    <button>
+    <button id="showSpecificationsBtn">
       <span></span>
       <span></span>
     </button>
@@ -61,28 +71,47 @@
   article {
     display: inline-block;
   }
-  .Box {
+  .descriptionBox {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid #262523;
-    border-top: 1px solid #262523;
+    border-top: 1px solid var(--secondary-color);
+    width: 72vw;
   }
-  .Box p{
+
+  .specificationRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--secondary-color);
+    border-top: 1px solid var(--secondary-color);
+    width: 72vw;
+  }
+  .hide {
     opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow:hidden;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
   }
+  .show {
+    opacity: 1;
+    height: auto;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+
   .specificationBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #262523;
+    display: grid;
+    grid-template-columns: 24vw 24vw;
+    column-gap: 12vw;
   }
   button {
     grid-area: 1/2/1/2;
     place-self: start end;
-    color: #262523;
-    background: #fffdf9;
-    width: 50px;
-    height: 50px;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    width: 2em;
+    height: 2em;
     border: 0;
     font-size: 1.5em;
     position: relative;
@@ -91,7 +120,7 @@
   button span {
     position: absolute;
     transition: 300ms;
-    background: #262523;
+    background: var(--secondary-color);
   }
 
   /* Create the "+" shape by positioning the spans absolutely */
@@ -110,13 +139,12 @@
   }
 
   /* Morph the shape when the button is hovered over */
-  button span {
+  .collapse span {
     transform: rotate(90deg);
   }
 
-  button span:last-child {
+  .collapse span:last-child {
     left: 50%;
     right: 50%;
   }
 </style>
-
