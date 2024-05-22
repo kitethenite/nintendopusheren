@@ -7,27 +7,36 @@ import Email from "../components/Email.astro";
 <article class="container">
   <h3>{titel}</h3>
   <p>Tilmeld dig for at få besked når produktet er tilbage på lager.</p>
-  <Email />
-  <WaitlistButton />
+  <div class="tilmeld">
+    <Email />
+    <WaitlistButton />
+  </div>
 </article>
 
 <style>
+  .tilmeld {
+    margin-left: 17px;
+    column-gap: 10px;
+    display: flex;
+    flex-direction: row;
+  }
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: solid 1px;
-    width: 24rem;
-    height: 18rem;
+    align-items: start;
+    border: solid 0.5px;
+    width: 25rem;
+    height: 13rem;
   }
   h3 {
-    margin-left: 25px;
+    margin-left: 17px;
     align-self: flex-start;
     font-family: var(--font-family-primary);
     font-size: var(--font-size-md);
   }
 
   p {
+    margin-left: 17px;
     width: 20.6rem;
   }
 </style>
