@@ -1,6 +1,21 @@
 ---
 
 ---
+<script>
+    let description = document.querySelector(".description"); 
+    let button = document.querySelector("button");
+
+    function clickDescription(){
+        console.log("click");
+        button.addEventListener("click", OpenDescription)
+    }
+
+    function OpenDescription(){
+        console.log("click");
+        description.classList.add(".hide")
+        
+    }
+ </script>
 
 <article>
   <section class="Box">
@@ -52,6 +67,9 @@
     border-bottom: 1px solid #262523;
     border-top: 1px solid #262523;
   }
+  .Box p{
+    opacity: 0;
+  }
   .specificationBox {
     display: flex;
     align-items: center;
@@ -92,12 +110,13 @@
   }
 
   /* Morph the shape when the button is hovered over */
-  button:hover span {
+  button span {
     transform: rotate(90deg);
   }
 
-  button:hover span:last-child {
+  button span:last-child {
     left: 50%;
     right: 50%;
   }
 </style>
+
