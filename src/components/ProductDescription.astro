@@ -1,8 +1,7 @@
 ---
-const {products} = Astro.props;
-console.log(products);
+const {data} = Astro.props;
+console.log(data);
 ---
-
 <script>
   let showDescriptionBtn = document.querySelector("#showDescription");
   let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
@@ -23,8 +22,8 @@ console.log(products);
 </script>
 
 <article>
-  <h2>{products.title}</h2>
-  <img src={products.image} alt="Add Image here" />
+  <h2>{data.title}</h2>
+  <img src={data.image} alt="Add Image here" />
   <h3>200,00 DKK</h3>
   <div>
     <section class="descriptionBox">
