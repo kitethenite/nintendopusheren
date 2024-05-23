@@ -1,7 +1,16 @@
 ---
 import Card from "./Card.astro";
-const {data} = Astro.props;
-console.log(data);
+const data = await fetch(
+"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?select=*,item:items(*,subcategory:subcategories(*,category:categories(*)))",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
+// console.log(data)
 ---
 
 <script>
@@ -88,14 +97,11 @@ console.log(data);
       <button id="prev-slide" class="slide-button material-symbols-rounded">
       </button>
       <ul class="image-list">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
+          {
+            data.map((data) => {
+              return <Card data={data} />;
+            })
+            }
       </ul>
       <button id="next-slide" class="slide-button material-symbols-rounded">
       </button>

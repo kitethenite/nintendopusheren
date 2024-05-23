@@ -3,14 +3,19 @@ const { data } = Astro.props;
 console.log(data);
 ---
 
-<article class="card">
-  <img src="/images/TestImg3.png" alt="Not Showing" />
-  <h2>Game Product Name</h2>
-  <p class="price">200,00 DKK</p>
-  <input type="button" value="Tilføj til kurv" />
-</article>
+<a href="#">
+  <article class="card">
+    <img src={data.image} alt="Not Showing" />
+    <h2>{data.title}</h2>
+    <p>{data.price},00 DKK</p>
+  </article>
+</a>
 
 <style>
+  
+  img{
+    width:20vw;
+  }
   input {
     border: none;
     color: var(--primary-color);
