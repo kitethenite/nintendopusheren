@@ -34,9 +34,8 @@ const { products } = Astro.props;
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>{products.title}</h1>
     <div class="omProduktet">
-      <h2>{products.title}</h2>
       <img src={products.image} alt="" />
       <p>{products.price} DKK</p>
     </div>
@@ -80,7 +79,7 @@ const { products } = Astro.props;
   </div>
   <div class="ekstra buttons"></div>
   </article>
-<Carousel/>
+  <Carousel/>
 
 	</body>
 </html>
