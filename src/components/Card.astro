@@ -1,0 +1,10 @@
+---
+const { header } = Astro.props;
+---
+<article class="card">
+    <img src="../../public/images/TestImg.png" alt="Billedet af produktet" />
+    <h2>{header}</h2>
+    <p></p>
+    <p class="price">200,00 DKK</p>
+    <slot />
+  </article>
