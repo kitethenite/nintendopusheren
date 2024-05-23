@@ -3,7 +3,7 @@ const { data } = Astro.props;
 console.log(data);
 ---
 
-<a href="#">
+<a href={data.slug}>
   <article class="card">
     <img src={data.image} alt="Not Showing" />
     <h2>{data.title}</h2>

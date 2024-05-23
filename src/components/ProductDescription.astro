@@ -3,12 +3,13 @@ const {data} = Astro.props;
 console.log(data);
 ---
 <script>
+  let descriptionRow = document.querySelector("#descriptionRow");
   let showDescriptionBtn = document.querySelector("#showDescription");
   let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
   let descriptionContent = document.querySelector("#descriptionContent");
   let specificationContent = document.querySelector("#specificationContent");
 
-  showDescriptionBtn.addEventListener("click", () => {
+  descriptionRow.addEventListener("click", () => {
     descriptionContent.classList.toggle("hide");
     descriptionContent.classList.toggle("show");
     showDescriptionBtn.classList.toggle("collapse");
@@ -26,7 +27,7 @@ console.log(data);
   <img src={data.image} alt="Add Image here" />
   <h3>200,00 DKK</h3>
   <div>
-    <section class="descriptionBox">
+    <section id="descriptionRow" class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
         {data.description}
