@@ -1,0 +1,32 @@
+---
+
+export async function getStaticPaths() {
+  const data = await fetch(
+    "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
+    {
+      method: "GET",
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+      },
+    }
+  ).then((response) => response.json());
+
+  return data.map((product) => {
+    return {
+      params: { slug: product.slug },
+      props: { products: product },
+    };
+  });
+}
+
+const { products } = Astro.props;
+
+---
+
+  <div class="omProduktet">
+    <h2>{products.title}</h2>
+    <img src={products.image} alt="" />
+    <p>{products.price} DKK</p>
+    <p>{products.description}</p>
+  </div>
