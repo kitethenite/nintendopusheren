@@ -1,0 +1,42 @@
+---
+import OverskriftOmOs from "../components/OverskriftOmOs.astro";
+import OmNP from "../components/OmNP.astro";
+import Sortiment from "../components/Sortiment.astro";
+import HeroimageIndex from "../components/HeroimageIndex.astro";
+import LuigiMansion2 from "../components/LuigiMansion2.astro";
+import PaperMario from "../components/PaperMario.astro";
+import Sidebutton from "../components/Sidebutton.astro";
+import Sidenavigation from "../components/Sidenavigation.astro";
+import Waitlist from "../components/Waitlist.astro";
+---
+
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css" />
+    <link rel="stylesheet" href="src/styles/styles.css" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 20px;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <main>
+      <!-- <HeroimageIndex />
+      <LuigiMansion2 />
+<PaperMario/> -->
+      <Sidenavigation />
+      <Waitlist />
+      <!-- <OverskriftOmOs />
+      <OmNP />
+      <Sortiment /> -->
+    </main>
+  </body>
+</html>
