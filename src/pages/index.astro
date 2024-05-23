@@ -4,6 +4,16 @@ import Footer from "../components/Footer.astro";
 import ProductDescription from "../components/ProductDescription.astro"
 import Carousel from "../components/Carousel.astro";
 import Card from "../components/Card.astro";
+
+const data = await fetch("https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?id=5", {
+	method:"GET",
+	headers: {
+		apikey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+
+	},
+}).then(res=>res.json());
+
+console.log(data);
 ---
 
 <html lang="da">
@@ -16,8 +26,8 @@ import Card from "../components/Card.astro";
 	</head>
 	<body>
 		<h1>Astro</h1>
-		<Card/>
-		<ProductDescription/>
-		<Carousel/>
-		<Footer/>
+		<section class="cards_container">
+			
+		</section>
+		<Carousel>
 </html>

@@ -1,10 +1,22 @@
 ---
-const { header } = Astro.props;
+const { data } = Astro.props;
+console.log(data);
 ---
+
 <article class="card">
-    <img src="../../public/images/TestImg.png" alt="Billedet af produktet" />
-    <h2>{header}</h2>
-    <p></p>
-    <p class="price">200,00 DKK</p>
-    <slot />
-  </article>
+  <slot />
+  <h2>Overskrift</h2>
+  <p>Another aha</p>
+  <p class="price">200,00 DKK</p>
+  <input type="button" value="Tilføj til kurv" />
+</article>
+
+<style>
+  input {
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    padding: 1em 1.5em 1em 1.5em;
+    font-size: 1rem;
+  }
+</style>

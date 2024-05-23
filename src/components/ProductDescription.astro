@@ -1,5 +1,6 @@
 ---
-
+const {data} = Astro.props;
+console.log(data);
 ---
 
 <script>
@@ -22,17 +23,14 @@
 </script>
 
 <article>
-  <h2>ProductName</h2>
-  <img src="#" alt="Add Image here" />
+  <h2>{data.title}</h2>
+  <img src={data.image} alt="Add Image here" />
   <h3>200,00 DKK</h3>
   <div>
     <section class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut
-        modi, veniam maiores maxime sit repudiandae amet tenetur voluptatum id
-        eum quis reprehenderit? Corrupti fugit dicta animi, soluta aperiam
-        ipsum!
+        {data.description}
       </p>
       <button id="showDescription" class="DescBtn">
         <span></span>
@@ -71,6 +69,9 @@
 </article>
 
 <style>
+  img{
+    width: 100vw;
+  }
   article {
     display: grid;
     grid-template-columns: 1fr;
@@ -81,7 +82,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-top: 1px solid var(--secondary-color);
-    width: 72vw;
+    width: 100vw;
   }
 
   .specificationRow {
@@ -89,7 +90,7 @@
     grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid var(--secondary-color);
     border-top: 1px solid var(--secondary-color);
-    width: 72vw;
+    width: 100vw;
   }
   .hide {
     opacity: 0;
