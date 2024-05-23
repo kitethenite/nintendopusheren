@@ -12,9 +12,9 @@
     descriptionContent.classList.toggle("hide");
     descriptionContent.classList.toggle("show");
     showDescriptionBtn.classList.toggle("collapse");
-});
+  });
 
-showSpecificationsBtn.addEventListener("click", () => {
+  showSpecificationsBtn.addEventListener("click", () => {
     specificationContent.classList.toggle("hide");
     specificationContent.classList.toggle("show");
     showSpecificationsBtn.classList.toggle("collapse");
@@ -24,52 +24,57 @@ showSpecificationsBtn.addEventListener("click", () => {
 <article>
   <h2>ProductName</h2>
   <img src="#" alt="Add Image here" />
-</article>
-<article>
-  <section class="descriptionBox">
-    <h3>Beskrivelse</h3>
-    <p id="descriptionContent" class="hide">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut modi,
-      veniam maiores maxime sit repudiandae amet tenetur voluptatum id eum quis
-      reprehenderit? Corrupti fugit dicta animi, soluta aperiam ipsum!
-    </p>
-    <button id="showDescription" class="DescBtn">
-      <span></span>
-      <span></span>
-    </button>
-  </section>
-  <section class="specificationRow">
-    <h3>Specifikationer</h3>
-    <div id="specificationContent" class="hide">
-      <div class="specificationBox">
-        <div>
-          <h4 class="condition">Condition</h4>
-          <p class="condition_desc">Lorem Ipsum</p>
-        </div>
-        <div>
-          <h4 class="created_at">Created At</h4>
-          <p class="created_at_desc">Lorem Ipsum</p>
-        </div>
-        <div>
-          <h4 class="country_origin">Country Origin</h4>
-          <p class="country_origin_desc">Lorem Ipsum</p>
-        </div>
-        <div>
-          <h4 class="game_condition">Game Condition</h4>
-          <p class="game_condition_desc">Lorem Ipsum</p>
+  <h3>200,00 DKK</h3>
+  <div>
+    <section class="descriptionBox">
+      <h3>Beskrivelse</h3>
+      <p id="descriptionContent" class="hide">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut modi,
+        veniam maiores maxime sit repudiandae amet tenetur voluptatum id eum quis
+        reprehenderit? Corrupti fugit dicta animi, soluta aperiam ipsum!
+      </p>
+      <button id="showDescription" class="DescBtn">
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+    <section class="specificationRow">
+      <h3>Specifikationer</h3>
+      <div id="specificationContent" class="hide">
+        <div class="specificationBox">
+          <div>
+            <h4 class="condition">Condition</h4>
+            <p class="condition_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="created_at">Created At</h4>
+            <p class="created_at_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="country_origin">Country Origin</h4>
+            <p class="country_origin_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="game_condition">Game Condition</h4>
+            <p class="game_condition_desc">Lorem Ipsum</p>
+          </div>
         </div>
       </div>
-    </div>
-    <button id="showSpecificationsBtn">
-      <span></span>
-      <span></span>
-    </button>
-  </section>
+      <button id="showSpecificationsBtn">
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+  </div>
+  <div class="ekstra buttons"></div>
 </article>
 
 <style>
   article {
-    display: inline-block;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-self: center;
+    justify-content: center;
   }
   .descriptionBox {
     display: grid;
@@ -89,7 +94,7 @@ showSpecificationsBtn.addEventListener("click", () => {
     opacity: 0;
     height: 0;
     margin: 0;
-    overflow:hidden;
+    overflow: hidden;
     transition-duration: 300ms;
     transition-timing-function: ease-in-out;
   }
@@ -123,7 +128,7 @@ showSpecificationsBtn.addEventListener("click", () => {
     background: var(--secondary-color);
   }
 
-  /* Create the "+" shape by positioning the spans absolutely */
+  /* Her er det hvor jeg laver et "+"" tegn */
   button span:first-child {
     top: 20%;
     bottom: 25%;
@@ -138,7 +143,7 @@ showSpecificationsBtn.addEventListener("click", () => {
     top: 45%;
   }
 
-  /* Morph the shape when the button is hovered over */
+  /* når jeg klikker på "+" animeres den om til et "-" */
   .collapse span {
     transform: rotate(90deg);
   }

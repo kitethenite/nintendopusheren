@@ -4,10 +4,10 @@
 
 <footer>
   <section class="section1">
-    <p>Gavekort</p>
-    <p>Levering</p>
-    <p>FAQ</p>
-    <p>Handelsbetingelser</p>
+    <a href="#">Gavekort</a>
+    <a href="#">Levering</a>
+    <a href="#">FAQ</a>
+    <a href="#">Handelsbetingelser</a>
   </section>
   <section class="section2">
     <h2>Kontakt</h2>
@@ -45,6 +45,12 @@
       display: flex;
       justify-content: space-around;
     }
+    a{
+      display: grid;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 8%;
+    }
     .section1 {
       padding-top: 3em;
     }
@@ -77,6 +83,13 @@
       grid-template-columns: 1fr 1fr;
       align-items: first baseline;
       background-color: var(--secondary-accent);
+    }
+    a{
+      display:flex;
+      flex-direction: column;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 0.5rem;
     }
     .section1 {
       padding-top: 3em;
