@@ -16,23 +16,32 @@
 </section>
 
 <style>
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-    margin-bottom: 112px;
+  @media only screen and (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      margin-bottom: 112px;
+      background-color: var(--accent-color);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   h2,
   p {
     color: var(--primary-color);
-    max-width: 32rem;
+    max-width: 400px;
   }
-  .container {
-    background-color: var(--accent-color);
-  }
-  img {
-    width: 100%;
-    height: auto;
+  @media only screen and (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column-reverse;
+      background-color: var(--accent-color);
+      align-items: center;
+    }
   }
 </style>
