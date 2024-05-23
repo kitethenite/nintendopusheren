@@ -1,6 +1,6 @@
 ---
-const {data} = Astro.props;
-console.log(data);
+const {products} = Astro.props;
+console.log(products);
 ---
 
 <script>
@@ -23,8 +23,8 @@ console.log(data);
 </script>
 
 <article>
-  <h2>{data.title}</h2>
-  <img src={data.image} alt="Add Image here" />
+  <h2>{products.title}</h2>
+  <img src={products.image} alt="Add Image here" />
   <h3>200,00 DKK</h3>
   <div>
     <section class="descriptionBox">

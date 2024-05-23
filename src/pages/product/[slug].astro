@@ -1,5 +1,5 @@
 ---
-
+import ProductDescription from "../../components/ProductDescription.astro";
 export async function getStaticPaths() {
   const data = await fetch(
     "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
@@ -30,3 +30,11 @@ const { products } = Astro.props;
     <p>{products.price} DKK</p>
     <p>{products.description}</p>
   </div>
+  
+
+
+
+
+
+
+  
