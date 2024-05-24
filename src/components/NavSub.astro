@@ -15,36 +15,52 @@ const items = await fetch(
 
 <a href=`/${data.slug}`>{data.name}</a>
 <ul class="items">
-  
-    {
-      items
-        .filter((item) => item.subcategory_id === data.id)
-        .map((item) => (
-  <li>
-         <a href={`/${data.slug}/${item.slug}`}>{item.slug}</a>
-    </li>))}
-
+  {
+    items
+      .filter((item) => item.subcategory_id === data.id)
+      .map((item) => (
+        <li>
+          <a href={`/${data.slug}/${item.slug}`}>{item.slug}</a>
+        </li>
+      ))
+  }
 </ul>
 
 <style>
+  /******** STYLING SUBCATEGORIES *********/
 
-    
+  a {
+    text-decoration: none;
+    color: var(--primary-color);
+    display: block;
+    background-color: var(--hover-color);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 0 0 1rem;
+
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-light);
+  }
+
   a:hover {
     background-color: var(--secondary-accent);
-    color: var( --primary-color)
   }
+
+  /****** STYLING SUB-SUBCATEGORIES (ITEMS) */
 
   li {
     list-style: none;
     position: relative;
     left: 150%;
+    color: var(--primary-color);
   }
 
   ul {
     position: absolute;
-  
 
-    /* display: none;  */
+    display: none;
   }
 
   ul li:hover > ul {

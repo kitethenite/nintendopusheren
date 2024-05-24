@@ -21,7 +21,7 @@ const { headliner } = Astro.props;
   <body>
     <header>
       <div class="icon">
-        <img src="/assets/icon.svg" alt="icon" />
+        <a href="/"><img src="/assets/icon.svg" alt="icon" /></a>
       </div>
       <div class="navigation">
         <Navigation />
@@ -37,21 +37,19 @@ const { headliner } = Astro.props;
 <style>
   header {
     display: grid;
-	grid-template-columns: 1fr minmax(auto, 1040px) 1fr;
+    grid-template-columns: 1fr minmax(auto, 1040px) 1fr;
     width: auto;
-    
   }
 
   .icon {
     grid-column: 1/2;
     z-index: 1;
     position: relative;
-	justify-self: end;
+    justify-self: end;
   }
 
   .navigation {
     grid-column: 2;
     z-index: 2;
-
   }
 </style>
