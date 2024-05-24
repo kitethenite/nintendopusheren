@@ -1,9 +1,14 @@
 ---
+<<<<<<< HEAD
+import MainLayout from "../layouts/MainLayout.astro";
+
+=======
 import "../styles/styles.css";
 import Footer from "../components/Footer.astro";
 import ProductDescription from "../components/ProductDescription.astro";
 import Carousel from "../components/Carousel.astro";
 import Card from "../components/Card.astro";
+>>>>>>> 50f68b8e76a2f34f70ebd937093c9e32552e9d02
 
 const data = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
@@ -18,6 +23,23 @@ const data = await fetch(
 console.log(data);
 ---
 
+<<<<<<< HEAD
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+    <section class="cards_container"></section>
+    <Carousel /></body
+  >
+</html>
+=======
 <MainLayout headliner="product view">
 
 </MainLayout>
+>>>>>>> a43e3ccb184425377676ed5f64de532e42c69fdd
