@@ -5,7 +5,9 @@ console.log(data);
 
 <a href={data.slug}>
   <article class="card">
-    <img src={data.image} alt="Not Showing" />
+    <div class="image-container">
+      <img src={data.image} alt="Not Showing" />
+    </div>
     <h3>{data.title}</h3>
     <p>{data.price},00 DKK</p>
     <div class="priceContainer"></div>
@@ -27,8 +29,12 @@ console.log(data);
     text-decoration: none;
     color: var(--secondary-color);
   }
+  .image-container{
+    display: grid;
+    grid-template-columns: 1em;
+  }
   img {
-    width: 20em;
+    width: 400px;
     place-self: stretch;
     object-fit: contain;
     grid-row: 1/2;
