@@ -1,28 +1,56 @@
 ---
-import Navigation from "../components/Navigation.astro"
-import "../styles/layout.css"
-import "../styles/styles.css"
+import Navigation from "../components/Navigation.astro";
+import "../styles/layout.css";
+import "../styles/styles.css";
 
-const {headliner} = Astro.props
+const { headliner } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="da">
-<head>
-	<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
     <title>{headliner}</title>
-</head>
-<body>
-    <Navigation/>
+  </head>
+  <body>
+    <header>
+      <div class="icon">
+        <img src="/assets/icon.svg" alt="icon" />
+      </div>
+      <div class="navigation">
+        <Navigation />
+      </div>
+    </header>
     <main>
-        <slot />
+      <slot />
     </main>
     <!-- Here will be a footer  -->
-</body>
+  </body>
 </html>
+
+<style>
+  header {
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: 1fr 1040px 1fr;
+  }
+
+  .icon {
+    grid-column: 1/2;
+    z-index: 1;
+    position: relative;
+	justify-self: end;
+  }
+
+  .navigation {
+    grid-column: 2;
+    z-index: 2;
+
+  }
+</style>

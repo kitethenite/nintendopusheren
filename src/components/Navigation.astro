@@ -1,21 +1,103 @@
 ---
+import NavStore from "./NavStore.astro";
+const data = await fetch(
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/categories?order=id.asc",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
 ---
 
 <nav>
-    <a href="/"><img src="" alt="logo" class="logo"></a>
-    
-  <div class="topnav">
-    <a href="#">Pre-order</a>
-    <a href="">Reparation</a>
-    <a href="">Sælg og byt</a>
-    <a href="about">Om os</a>
+  <div class="top">
+    <div class="logo">
+      <a href="/"><img src="assets/logo.svg" alt="logo" /></a>
+    </div>
+
+    <ul class="topnav">
+      <li><a href="">Pre-order</a></li>
+      <li><a href="">Reparation</a></li>
+      <li><a href="">Sælg og byt</a></li>
+      <li><a href=`product-list`>Om os</a></li>
+    </ul>
+    <div class="userarea">
+      <a href="">
+        <img src="assets/search.svg" alt="search button" />
+      </a>
+      <a href="">
+        <img src="assets/profile.svg" alt="profile button" />
+      </a>
+      <a href="">
+        <img src="assets/basket.svg" alt="shopping basket button" />
+      </a>
+    </div>
   </div>
+
   <div class="storenav">
-    <a href=""></a>
-    <a href=""></a>
-    <a href=""></a>
-    <a href=""></a>
-    <a href=""></a>
-    <a href=""></a>
+    {
+      data.map((data) => {
+        return <NavStore data={data} />;
+      })
+    }
   </div>
 </nav>
+
+<style>
+  nav {
+    background-color: aqua;
+
+    font-family: var(--font-family-primary);
+  }
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+  }
+
+  .topnav {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    grid-column: 2;
+    padding: 0 6rem;
+    justify-content: space-around;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: var(--font-size-md);
+
+    color: var(--secondary-color);
+    letter-spacing: 0.5px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+  }
+
+  a:active {
+    text-decoration: underline;
+  }
+  .userarea {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: end;
+    align-items: center;
+    height: 24px;
+  }
+
+  .userarea  img:hover {
+    filter: invert(31%) sepia(99%) saturate(1524%) hue-rotate(348deg)
+      brightness(89%) contrast(91%);
+  }
+
+  .storenav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+</style>

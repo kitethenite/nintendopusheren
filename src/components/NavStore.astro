@@ -1,0 +1,33 @@
+---
+const { data } = Astro.props;
+---
+
+<ul>
+  <li>
+    <div class="category">
+      <p>{data.category}</p>
+    </div>
+    <ul class="subcategory">
+      <li>
+        <p>empty atm</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+  }
+
+  .category {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    
+  }
+
+  p {
+    text-align: center;
+    color: white;
+  }
+</style>
