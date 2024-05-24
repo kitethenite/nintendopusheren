@@ -1,0 +1,13 @@
+---
+const { data } = Astro.props;
+---
+
+<a href={`product/${data.slug}`}>
+  <article class="productlist">
+    <img src={data.image} alt="text" />
+    <h3>{data.title}</h3>
+    <div class="price">{data.price} DKK</div>
+    <div class="stock">{data.in_stock}</div>
+    <div class="buy">Tilføj kurv</div>
+  </article>
+</a>

@@ -1,0 +1,117 @@
+---
+
+---
+
+<footer>
+  <section class="section1">
+    <a href="#">Gavekort</a>
+    <a href="#">Levering</a>
+    <a href="#">FAQ</a>
+    <a href="#">Handelsbetingelser</a>
+  </section>
+  <section class="section2">
+    <h2>Kontakt</h2>
+    <p>Ydungsgade 4-6, kælderen 2200 Kbh N</p>
+    <h2>Email:</h2>
+    <p>kontakt@nintendopusheren.dk</p>
+    <h2>Telefon:</h2>
+    <p>60 57 12 82</p>
+  </section>
+  <section class="section3">
+    <div>
+      <h2>Åbningstider</h2>
+      <div class="OpeningHours">
+        <div>
+          <p>Man-Fre</p>
+          <p>Lørdag</p>
+          <p>Søndag</p>
+        </div>
+        <div class="Hours">
+          <p>12:00 - 17:30</p>
+          <p>11:00 - 16:00</p>
+          <p>12:00 - 15:00</p>
+          <p>Kun første søndag hver måned</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<style>
+  @media (min-width: 1440px) {
+    footer {
+      background-color: #3c4e5a;
+      padding: 5em 0 2em 0;
+      display: flex;
+      justify-content: space-around;
+    }
+    a{
+      display: grid;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 8%;
+    }
+    .section1 {
+      padding-top: 3em;
+    }
+    .section2 p {
+      text-decoration: underline;
+    }
+    .section3 {
+      display: flex;
+      align-items: baseline;
+    }
+    .OpeningHours {
+      display: flex;
+    }
+    .Hours {
+      text-align: right;
+    }
+
+    p {
+      color: var(--primary-color);
+    }
+    h2 {
+      color: var(--primary-color);
+    }
+  }
+
+  @media (max-width: 1440px) {
+    footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: first baseline;
+      background-color: var(--secondary-accent);
+    }
+    a{
+      display:flex;
+      flex-direction: column;
+      color: var(--primary-color);
+      text-decoration: none;
+      padding: 0.5rem;
+    }
+    .section1 {
+      padding-top: 3em;
+    }
+    .section2 p {
+      text-decoration: underline;
+    }
+    .section3 {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .OpeningHours {
+      display: flex;
+    }
+    .Hours {
+      text-align: right;
+    }
+
+    p {
+      color: var(--primary-color);
+    }
+    h2 {
+      color: var(--primary-color);
+    }
+  }
+</style>
