@@ -20,7 +20,7 @@ const items = await fetch(
       .filter((item) => item.subcategory_id === data.id)
       .map((item) => (
         <li>
-          <a href={`/${data.slug}/${item.slug}`}>{item.slug}</a>
+          <a href={`/${data.slug}/${item.slug}`}>{item.name}</a>
         </li>
       ))
   }
@@ -50,20 +50,22 @@ const items = await fetch(
 
   /****** STYLING SUB-SUBCATEGORIES (ITEMS) */
 
-  li {
+  .items {
     list-style: none;
-    position: relative;
-    left: 150%;
-    color: var(--primary-color);
+    position: relative; 
+    left: 100%; 
+    z-index: 2;
+
   }
 
-  ul {
-    position: absolute;
+  .items li {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 
-    display: none;
+  }
+  .items li:first-child {
+    border-top: 1px solid black;
   }
 
-  ul li:hover > ul {
-    display: inherit;
-  }
+  /****** hierarkin på denna är ul.items > li > a */
 </style>

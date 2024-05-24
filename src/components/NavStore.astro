@@ -21,13 +21,6 @@ const subcategories = await fetch(
       <p>{data.category}</p>
     </div>
     <ul class="subcategories">
-      <!-- <li>
-        {
-          subcategories
-            .filter((sub) => sub.category_id === data.id)
-            .map((sub) => <NavSub data={sub} />)
-        }
-      </li> -->
       {
         subcategories
           .filter((sub) => sub.category_id === data.id)
@@ -77,14 +70,17 @@ const subcategories = await fetch(
 
   .subcategories {
     width: 100%;
+
   }
   .subcategory {
     width: 100%;
+    z-index: 1;
     margin: 0 auto;
     padding: 0;
-    border-left: 1px solid black; 
-    border-right: 1px solid black; 
-    border-bottom: 1px solid black; 
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+
   }
 
   .subcategory:first-child {
@@ -93,8 +89,8 @@ const subcategories = await fetch(
 
   ul ul {
     position: absolute;
-    top: 100%;
-    display: none;
+
+    /* display: none; */
   }
 
   ul li:hover > ul {
