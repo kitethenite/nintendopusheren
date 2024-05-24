@@ -1,0 +1,47 @@
+<section class="TilføjKurv">
+  <button class="Tilføj"> Tilføj til kurv </button>
+  <button class="tilføjet" style="display:none"> Tilføjet til kurv</button>
+</section>
+
+<style>
+  button {
+    cursor: pointer;
+    width: 160px;
+    height: 41px;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: solid 0.5px black;
+    border-bottom: solid 0.5px black;
+    border-right: none;
+    border-left: solid 0.5px black;
+    background-color: var(--secondary-accent);
+    color: var(--primary-color);
+  }
+
+  button:hover {
+    background-color: var(--accent-color);
+  }
+  button.rød {
+    background-color: var(
+      --accent-color
+    ); /* Eller en hvilken som helst rød nuance du ønsker */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tilføjKnap = document.querySelector(".Tilføj");
+    const tilføjetKnap = document.querySelector(".tilføjet");
+
+    tilføjKnap.addEventListener("click", () => {
+      tilføjKnap.style.display = "none";
+      tilføjetKnap.style.display = "block";
+      tilføjetKnap.classList.add("rød");
+    });
+
+    tilføjetKnap.addEventListener("click", () => {
+      tilføjetKnap.style.display = "none";
+      tilføjKnap.style.display = "block";
+    });
+  });
+</script>
