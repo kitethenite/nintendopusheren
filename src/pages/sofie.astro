@@ -1,7 +1,13 @@
 ---
+import OverskriftOmOs from "../components/OverskriftOmOs.astro";
+import OmNP from "../components/OmNP.astro";
+import Sortiment from "../components/Sortiment.astro";
 import HeroimageIndex from "../components/HeroimageIndex.astro";
 import LuigiMansion2 from "../components/LuigiMansion2.astro";
 import PaperMario from "../components/PaperMario.astro";
+import Sidebutton from "../components/Sidebutton.astro";
+import Sidenavigation from "../components/Sidenavigation.astro";
+import Waitlist from "../components/Waitlist.astro";
 ---
 
 <html lang="da">
@@ -16,19 +22,21 @@ import PaperMario from "../components/PaperMario.astro";
   </head>
   <style>
     * {
-      margin: 0;
-    }
-    h1 {
-      text-align: center;
-      font-size: var(--font-size-lg);
+      box-sizing: border-box;
+      margin: 20px;
+      padding: 20px;
     }
   </style>
   <body>
     <main>
-      <HeroimageIndex />
-      <h1>Nyheder</h1>
+      <!-- <HeroimageIndex />
       <LuigiMansion2 />
-      <PaperMario />
+<PaperMario/> -->
+      <Sidenavigation />
+      <Waitlist />
+      <!-- <OverskriftOmOs />
+      <OmNP />
+      <Sortiment /> -->
     </main>
   </body>
 </html>

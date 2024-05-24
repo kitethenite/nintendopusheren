@@ -2,10 +2,13 @@
 const { tekst } = Astro.props;
 ---
 
-<button>
-  <img src="images/button.svg" alt="" />
-  <a href="#">{tekst}</a>
-</button>
+<div class="container">
+  <button>
+    <img class="knap" src="images/button.svg" alt="" />
+    <img class="knap_mobile" src="images/button_mobile.svg" alt="" />
+    <a href="#">{tekst}</a>
+  </button>
+</div>
 
 <style>
   button {
@@ -21,10 +24,35 @@ const { tekst } = Astro.props;
   }
 
   a {
-    color: var(  --accent-color);
+    color: var(--accent-color);
     grid-area: 1/1;
     text-decoration: none;
     font-family: var(--font-family-tertiary);
     font-size: var(--font-size-lg);
+  }
+  @media only screen and (min-width: 768px) {
+    .knap_mobile {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .knap {
+      display: none;
+    }
+
+    .knap_mobile {
+      width: 120px;
+    }
+
+    a {
+      color: var(--primary-color);
+      font-size: 24px;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
   }
 </style>

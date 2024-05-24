@@ -17,11 +17,35 @@
   .tekst {
     max-width: 25rem;
   }
-  .container {
-    column-gap: 290px;
-    justify-content: flex-end;
-    align-items: center;
-    place-items: center;
-    display: flex;
+
+
+  @media only screen and (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      margin-bottom: 112px;
+      background-color: var(--accent-color);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  h2,
+  p {
+    color: var(--primary-color);
+    max-width: 400px;
+  }
+  @media only screen and (max-width: 768px) {
+    .container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--accent-color);
+      align-items: center;
+    }
   }
 </style>
