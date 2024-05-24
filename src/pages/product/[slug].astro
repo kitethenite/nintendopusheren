@@ -41,7 +41,6 @@ const { product } = Astro.props;
       <h1>{product.title}</h1>
       <p>{product.price} DKK</p>
     </div>
-    <button class="addItemButton">Tilføj til kurv</button>
     <section id="descriptionRow" class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
@@ -79,37 +78,13 @@ const { product } = Astro.props;
         <span></span>
       </button>
     </section>
-    <button class="notificationButton">Giv mig besked når produktet er på lager</button>
     <Carousel />
     <Footer />
   </body>
 </html>
 
 <style>
-  .addItemButton{
-    background-color: var(--secondary-accent);
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    width: 56vw;
-    height: 5vh;
-  }
-  .notificationButton{
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    font-size: 1rem;
-    width: 60vw;
-    height: 10vh;
-    padding: 0 6vw 0 6vw;
-    margin: 16% 0 24% 0;
-    transition: 700ms;
-  }
-  .notificationButton:hover{
-    background-color: var(--secondary-accent);
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    transition: 700ms;
-  }
+ 
   img {
     width: 100vw;
   }
