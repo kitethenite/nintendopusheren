@@ -15,26 +15,47 @@
     om måneden holder jeg Mario Kart 64-turnering og af og til også andre
     arrangementer. Alt bliver annonceret på Facebooksiden.
   </p>
-  <img src="/images/mads.avif" alt="" />
-</div> 
-
+  <img src="/images/about-mads-445x445.webp" alt="" />
+</div>
 
 <style>
   img {
     max-width: 100%;
     height: auto;
   }
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 113px;
-    justify-items: center;
+
+  @media only screen and (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 113px;
+      justify-items: center;
+    }
+
+    p {
+      max-width: 475px;
+    }
   }
 
   p {
     font-family: var(--font-family-secondary);
     font-weight: var(--font-weight-light);
     max-width: 475px;
+
     font-size: var(--font-size-sm);
+  }
+
+  @media only screen and (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: 30px;
+    }
   }
 </style>

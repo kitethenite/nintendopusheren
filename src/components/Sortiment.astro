@@ -1,5 +1,5 @@
 <div class="container">
-  <img src="/images/butik.avif" alt="" />
+  <img src="/images/about-bottom-712x600.webp" alt="" />
   <p>
     <strong>Sortimentet strækker sig</strong> fra den første Nintendo og helt frem
     til den nuværende generations konsoller. Fokus ligger på retrospil, men der begynder
@@ -25,12 +25,15 @@
     width: 100%;
     height: auto;
   }
-  .container {
-    justify-items: flex-start;
-    margin-left: 0;
-    gap: 15%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+  @media only screen and (min-width: 768px) {
+    .container {
+      justify-items: flex-start;
+      margin-left: 0;
+      gap: 15%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   p {
@@ -38,5 +41,21 @@
     font-weight: var(--font-weight-light);
     max-width: 475px;
     font-size: var(--font-size-sm);
+  }
+
+  @media only screen and (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    p {
+      margin-top: 30px;
+    }
   }
 </style>

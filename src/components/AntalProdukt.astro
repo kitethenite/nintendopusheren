@@ -1,0 +1,92 @@
+<div class="product-count">
+    <input
+      type="text"
+      class="count-textbox"
+      value="1"
+      id="productCount"
+      readonly
+    />
+    <div class="antal">
+      <button class="minus-button">
+        <i class="fa fa-minus"></i>
+      </button>
+      <button class="plus-button">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  
+  <style>
+    .product-count {
+      display: flex;
+      flex-direction: row;
+    }
+  
+    .count-textbox {
+      color: #000;
+      font-size: 16px;
+      line-height: normal;
+      width: 25px;
+      height: 38px;
+      border: solid 0.5px;
+      text-align: center;
+      align-self: center;
+      background-color: var(--primary-color);
+    }
+  
+    .plus-button {
+      width: 10px;
+      height: 22px;
+    }
+  
+    .minus-button {
+      border: none;
+    }
+    .minus-button,
+    .plus-button {
+      border-top: solid 0.5px;
+      border-bottom: solid 0.5px;
+      border-right: none;
+      border-left: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+      cursor: pointer;
+      width: 27px;
+      background-color: var(--primary-color);
+    }
+  
+    .antal {
+      text-align: center;
+      display: flex;
+      flex-direction: column-reverse;
+      border: none;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const productCount = document.getElementById("productCount");
+      const plusButton = document.querySelector(".plus-button");
+      const minusButton = document.querySelector(".minus-button");
+  
+      plusButton.addEventListener("click", function () {
+        let currentValue = parseInt(productCount.value);
+        if (!isNaN(currentValue)) {
+          productCount.value = currentValue + 1;
+        } else {
+          productCount.value = 1;
+        }
+      });
+  
+      minusButton.addEventListener("click", function () {
+        let currentValue = parseInt(productCount.value);
+        if (!isNaN(currentValue) && currentValue > 1) {
+          productCount.value = currentValue - 1;
+        } else {
+          productCount.value = 1;
+        }
+      });
+    });
+  </script>
+  
