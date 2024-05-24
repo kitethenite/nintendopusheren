@@ -3,6 +3,10 @@ import "../../styles/styles.css";
 import ProductDescription from "../../components/ProductDescription.astro";
 import Footer from "../../components/Footer.astro";
 import Carousel from "../../components/Carousel.astro";
+import AntalProdukt from "../../components/AntalProdukt.astro";
+import GemProdukt from "../../components/GemProdukt.astro";
+import Waitlist from "../../components/Waitlist.astro";
+import PurchaseButton from "../../components/PurchaseButton.astro";
 
 export async function getStaticPaths() {
   const data = await fetch(
@@ -41,6 +45,11 @@ const { product } = Astro.props;
       <h1>{product.title}</h1>
       <p>{product.price} DKK</p>
     </div>
+    <div class="purchaseContainer">
+      <AntalProdukt />
+      <PurchaseButton tekst="Tilføj til kurv" />
+      <GemProdukt />
+    </div>
     <section id="descriptionRow" class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
@@ -78,116 +87,134 @@ const { product } = Astro.props;
         <span></span>
       </button>
     </section>
+    <Waitlist />
     <Carousel />
     <Footer />
   </body>
+
+  <style>
+    h3 {
+      font-family: var(--font-family-secondary);
+      font-weight: var(--font-weight-sm);
+      font-size: var(--font-size-sm);
+    }
+    h4 {
+      font-family: var(--font-family-secondary);
+      font-weight: var(--font-weight-sm);
+      font-size: var(--font-size-sm);
+    }
+    .purchaseContainer {
+      display: flex;
+      align-items: center;
+      justify-content:space-between;
+      margin: 8% 0 16% 0;
+    }
+    img {
+      width: 100vw;
+    }
+    article {
+      display: grid;
+      grid-template-columns: 1fr;
+      place-self: center;
+      justify-content: center;
+    }
+    .descriptionBox {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--secondary-color);
+      width: 100vw;
+    }
+
+    .specificationRow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--secondary-color);
+      border-top: 1px solid var(--secondary-color);
+      width: 100vw;
+    }
+    .hide {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in-out;
+    }
+    .show {
+      opacity: 1;
+      height: auto;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in-out;
+    }
+
+    .specificationBox {
+      display: grid;
+      grid-template-columns: 24vw 24vw;
+      column-gap: 12vw;
+    }
+    button {
+      grid-area: 1/2/1/2;
+      place-self: start end;
+      color: var(--secondary-color);
+      background: var(--primary-color);
+      width: 2em;
+      height: 2em;
+      border: 0;
+      font-size: 1.5em;
+      position: relative;
+    }
+
+    button span {
+      position: absolute;
+      transition: 300ms;
+      background: var(--secondary-color);
+    }
+
+    /* Her er det hvor jeg laver et "+"" tegn */
+    button span:first-child {
+      top: 20%;
+      bottom: 25%;
+      width: 1px;
+      left: 50%;
+    }
+
+    button span:last-child {
+      left: 25%;
+      right: 25%;
+      height: 1px;
+      top: 45%;
+    }
+
+    /* når jeg klikker på "+" animeres den om til et "-" */
+    .collapse span {
+      transform: rotate(90deg);
+    }
+
+    .collapse span:last-child {
+      left: 50%;
+      right: 50%;
+    }
+  </style>
+  <script>
+    let specificationRow = document.querySelector(".specificationRow");
+    let descriptionRow = document.querySelector("#descriptionRow");
+    let showDescriptionBtn = document.querySelector("#showDescription");
+    let showSpecificationsBtn = document.querySelector(
+      "#showSpecificationsBtn"
+    );
+    let descriptionContent = document.querySelector("#descriptionContent");
+    let specificationContent = document.querySelector("#specificationContent");
+
+    descriptionRow.addEventListener("click", () => {
+      descriptionContent.classList.toggle("hide");
+      descriptionContent.classList.toggle("show");
+      showDescriptionBtn.classList.toggle("collapse");
+    });
+
+    specificationRow.addEventListener("click", () => {
+      specificationContent.classList.toggle("hide");
+      specificationContent.classList.toggle("show");
+      showSpecificationsBtn.classList.toggle("collapse");
+    });
+  </script>
 </html>
-
-<style>
- 
-  img {
-    width: 100vw;
-  }
-  article {
-    display: grid;
-    grid-template-columns: 1fr;
-    place-self: center;
-    justify-content: center;
-  }
-  .descriptionBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--secondary-color);
-    width: 100vw;
-  }
-
-  .specificationRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--secondary-color);
-    border-top: 1px solid var(--secondary-color);
-    width: 100vw;
-  }
-  .hide {
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
-  }
-  .show {
-    opacity: 1;
-    height: auto;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
-  }
-
-  .specificationBox {
-    display: grid;
-    grid-template-columns: 24vw 24vw;
-    column-gap: 12vw;
-  }
-  button {
-    grid-area: 1/2/1/2;
-    place-self: start end;
-    color: var(--secondary-color);
-    background: var(--primary-color);
-    width: 2em;
-    height: 2em;
-    border: 0;
-    font-size: 1.5em;
-    position: relative;
-  }
-
-  button span {
-    position: absolute;
-    transition: 300ms;
-    background: var(--secondary-color);
-  }
-
-  /* Her er det hvor jeg laver et "+"" tegn */
-  button span:first-child {
-    top: 20%;
-    bottom: 25%;
-    width: 1px;
-    left: 50%;
-  }
-
-  button span:last-child {
-    left: 25%;
-    right: 25%;
-    height: 1px;
-    top: 45%;
-  }
-
-  /* når jeg klikker på "+" animeres den om til et "-" */
-  .collapse span {
-    transform: rotate(90deg);
-  }
-
-  .collapse span:last-child {
-    left: 50%;
-    right: 50%;
-  }
-</style>
-<script>
-  let specificationRow = document.querySelector(".specificationRow");
-  let descriptionRow = document.querySelector("#descriptionRow");
-  let showDescriptionBtn = document.querySelector("#showDescription");
-  let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
-  let descriptionContent = document.querySelector("#descriptionContent");
-  let specificationContent = document.querySelector("#specificationContent");
-
-  descriptionRow.addEventListener("click", () => {
-    descriptionContent.classList.toggle("hide");
-    descriptionContent.classList.toggle("show");
-    showDescriptionBtn.classList.toggle("collapse");
-  });
-
-  specificationRow.addEventListener("click", () => {
-    specificationContent.classList.toggle("hide");
-    specificationContent.classList.toggle("show");
-    showSpecificationsBtn.classList.toggle("collapse");
-  });
-</script>
