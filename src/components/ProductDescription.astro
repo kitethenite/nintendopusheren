@@ -1,0 +1,156 @@
+---
+
+---
+
+<script>
+  let showDescriptionBtn = document.querySelector("#showDescription");
+  let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
+  let descriptionContent = document.querySelector("#descriptionContent");
+  let specificationContent = document.querySelector("#specificationContent");
+
+  showDescriptionBtn.addEventListener("click", () => {
+    descriptionContent.classList.toggle("hide");
+    descriptionContent.classList.toggle("show");
+    showDescriptionBtn.classList.toggle("collapse");
+  });
+
+  showSpecificationsBtn.addEventListener("click", () => {
+    specificationContent.classList.toggle("hide");
+    specificationContent.classList.toggle("show");
+    showSpecificationsBtn.classList.toggle("collapse");
+  });
+</script>
+
+<article>
+  <h2>ProductName</h2>
+  <img src="#" alt="Add Image here" />
+  <h3>200,00 DKK</h3>
+  <div>
+    <section class="descriptionBox">
+      <h3>Beskrivelse</h3>
+      <p id="descriptionContent" class="hide">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut
+        modi, veniam maiores maxime sit repudiandae amet tenetur voluptatum id
+        eum quis reprehenderit? Corrupti fugit dicta animi, soluta aperiam
+        ipsum!
+      </p>
+      <button id="showDescription" class="DescBtn">
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+    <section class="specificationRow">
+      <h3>Specifikationer</h3>
+      <div id="specificationContent" class="hide">
+        <div class="specificationBox">
+          <div>
+            <h4 class="condition">Condition</h4>
+            <p class="condition_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="created_at">Created At</h4>
+            <p class="created_at_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="country_origin">Country Origin</h4>
+            <p class="country_origin_desc">Lorem Ipsum</p>
+          </div>
+          <div>
+            <h4 class="game_condition">Game Condition</h4>
+            <p class="game_condition_desc">Lorem Ipsum</p>
+          </div>
+        </div>
+      </div>
+      <button id="showSpecificationsBtn">
+        <span></span>
+        <span></span>
+      </button>
+    </section>
+  </div>
+  <div class="ekstra buttons"></div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-self: center;
+    justify-content: center;
+  }
+  .descriptionBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--secondary-color);
+    width: 72vw;
+  }
+
+  .specificationRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--secondary-color);
+    border-top: 1px solid var(--secondary-color);
+    width: 72vw;
+  }
+  .hide {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+  .show {
+    opacity: 1;
+    height: auto;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .specificationBox {
+    display: grid;
+    grid-template-columns: 24vw 24vw;
+    column-gap: 12vw;
+  }
+  button {
+    grid-area: 1/2/1/2;
+    place-self: start end;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    width: 2em;
+    height: 2em;
+    border: 0;
+    font-size: 1.5em;
+    position: relative;
+  }
+
+  button span {
+    position: absolute;
+    transition: 300ms;
+    background: var(--secondary-color);
+  }
+
+  /* Her er det hvor jeg laver et "+"" tegn */
+  button span:first-child {
+    top: 20%;
+    bottom: 25%;
+    width: 1px;
+    left: 50%;
+  }
+
+  button span:last-child {
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    top: 45%;
+  }
+
+  /* når jeg klikker på "+" animeres den om til et "-" */
+  .collapse span {
+    transform: rotate(90deg);
+  }
+
+  .collapse span:last-child {
+    left: 50%;
+    right: 50%;
+  }
+</style>
