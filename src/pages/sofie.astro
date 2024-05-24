@@ -8,6 +8,7 @@ import PaperMario from "../components/PaperMario.astro";
 import Sidebutton from "../components/Sidebutton.astro";
 import Sidenavigation from "../components/Sidenavigation.astro";
 import Waitlist from "../components/Waitlist.astro";
+import SingleViewKurv from "../components/SingleViewKurv.astro";
 ---
 
 <html lang="da">
@@ -15,6 +16,14 @@ import Waitlist from "../components/Waitlist.astro";
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="src/styles/styles.css" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -29,14 +38,7 @@ import Waitlist from "../components/Waitlist.astro";
   </style>
   <body>
     <main>
-      <!-- <HeroimageIndex />
-      <LuigiMansion2 />
-<PaperMario/> -->
-      <Sidenavigation />
-      <Waitlist />
-      <!-- <OverskriftOmOs />
-      <OmNP />
-      <Sortiment /> -->
+      <SingleViewKurv />
     </main>
   </body>
 </html>

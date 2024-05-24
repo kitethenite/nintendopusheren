@@ -1,43 +1,42 @@
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const gemProdukt = document.querySelector(".gemProdukt");
-      const hjerte = document.querySelector(".hjerte");
-      const fyldtHjerte = document.querySelector(".fyldt-hjerte");
-  
-      gemProdukt.addEventListener("click", () => {
-        if (hjerte.style.display === "none") {
-          hjerte.style.display = "block";
-          fyldtHjerte.style.display = "none";
-        } else {
-          hjerte.style.display = "none";
-          fyldtHjerte.style.display = "block";
-        }
-      });
+  document.addEventListener("DOMContentLoaded", () => {
+    const gemProdukt = document.querySelector(".gemProdukt");
+    const hjerte = document.querySelector(".hjerte");
+    const fyldtHjerte = document.querySelector(".fyldt-hjerte");
+
+    gemProdukt.addEventListener("click", () => {
+      if (hjerte.style.display === "none") {
+        hjerte.style.display = "block";
+        fyldtHjerte.style.display = "none";
+      } else {
+        hjerte.style.display = "none";
+        fyldtHjerte.style.display = "block";
+      }
     });
-  </script>
-  
-  <section class="gemProdukt">
-    <img class="hjerte" src="/hjerte.svg" alt="Udfyldt hjerte" />
-    <img
-      class="fyldt-hjerte"
-      src="/hjerte-fyldt.svg"
-      alt="Fyldt hjerte"
-      style="display:none;"
-    />
-  </section>
-  
-  <style>
-    img {
-      width: 60%;
-    }
-    .gemProdukt {
-      display: flex;
-      border: solid 0.5px;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-  </style>
-  
+  });
+</script>
+
+<section class="gemProdukt">
+  <img class="hjerte" src="/images/hjerte.svg" alt="Udfyldt hjerte" />
+  <img
+    class="fyldt-hjerte"
+    src="/images/hjerte-fyldt.svg"
+    alt="Fyldt hjerte"
+    style="display:none;"
+  />
+</section>
+
+<style>
+  img {
+    width: 60%;
+  }
+  .gemProdukt {
+    display: flex;
+    border: solid 0.5px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+</style>
