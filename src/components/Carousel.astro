@@ -1,7 +1,7 @@
 ---
 import Card from "./Card.astro";
 const data = await fetch(
-"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
+"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=7",
   {
     method: "GET",
     headers: {
@@ -97,11 +97,15 @@ const data = await fetch(
       <button id="prev-slide" class="slide-button material-symbols-rounded">
       </button>
       <ul class="image-list">
+        <section class="image-item">
           {
             data.map((data) => {
               return <Card data={data} />;
             })
             }
+
+
+        </section>
       </ul>
       <button id="next-slide" class="slide-button material-symbols-rounded">
       </button>
@@ -169,6 +173,9 @@ const data = await fetch(
     display: none;
   }
   .slider-wrapper .image-list .image-item {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16em;
     width: 325px;
     height: 400px;
     object-fit: cover;
