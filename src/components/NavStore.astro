@@ -15,7 +15,7 @@ const subcategories = await fetch(
 ).then((res) => res.json());
 ---
 
-<ul class="store">
+<ul class="dropdown">
   <li>
     <div class="category">
       <p>{data.category}</p>
@@ -70,7 +70,6 @@ const subcategories = await fetch(
 
   .subcategories {
     width: 100%;
-
   }
   .subcategory {
     width: 100%;
@@ -80,7 +79,7 @@ const subcategories = await fetch(
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-
+    position: relative;
   }
 
   .subcategory:first-child {
@@ -89,11 +88,11 @@ const subcategories = await fetch(
 
   ul ul {
     position: absolute;
-
-    /* display: none; */
+    display: none;
   }
 
   ul li:hover > ul {
     display: inherit;
   }
+
 </style>

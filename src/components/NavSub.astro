@@ -13,7 +13,7 @@ const items = await fetch(
 ).then((res) => res.json());
 ---
 
-<a href=`/${data.slug}`>{data.name}</a>
+<a href=`/${data.slug}` class="subcategory">{data.name}</a>
 <ul class="items">
   {
     items
@@ -29,7 +29,7 @@ const items = await fetch(
 <style>
   /******** STYLING SUBCATEGORIES *********/
 
-  a {
+  .subcategory, a {
     text-decoration: none;
     color: var(--primary-color);
     display: block;
@@ -44,7 +44,7 @@ const items = await fetch(
     font-weight: var(--font-weight-light);
   }
 
-  a:hover {
+  .subcategory:hover, a:hover {
     background-color: var(--secondary-accent);
   }
 
@@ -52,20 +52,34 @@ const items = await fetch(
 
   .items {
     list-style: none;
-    position: relative; 
+    position: absolute; 
     left: 100%; 
     z-index: 2;
-
+    top: -1px;
+    display: none;
   }
 
   .items li {
     border-right: 1px solid black;
+    border-left: 1px solid black;
+
     border-bottom: 1px solid black;
 
   }
   .items li:first-child {
     border-top: 1px solid black;
   }
+
+  /* the plus means that when a.subcategory is being hovered, it's adjacent sibling, which is div.item, will also inherit the display */
+  .subcategory:hover + .items {
+    display: inherit;
+  }
+
+  .items:hover{
+    display: block;
+  }
+
+
 
   /****** hierarkin på denna är ul.items > li > a */
 </style>
