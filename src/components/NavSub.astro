@@ -1,0 +1,51 @@
+---
+const { data } = Astro.props;
+
+const items = await fetch(
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
+---
+
+<a href=`/${data.slug}`>{data.name}</a>
+<ul class="items">
+  
+    {
+      items
+        .filter((item) => item.subcategory_id === data.id)
+        .map((item) => (
+  <li>
+         <a href={`/${data.slug}/${item.slug}`}>{item.slug}</a>
+    </li>))}
+
+</ul>
+
+<style>
+  a:hover {
+    background-color: var(--secondary-accent);
+    color: var( --primary-color)
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+    left: 150%;
+  }
+
+  ul {
+    position: absolute;
+  
+
+    /* display: none;  */
+  }
+
+  ul li:hover > ul {
+    display: inherit;
+  }
+</style>

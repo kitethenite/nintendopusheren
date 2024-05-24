@@ -1,33 +1,62 @@
 ---
+import NavSub from "./NavSub.astro";
+
 const { data } = Astro.props;
+
+const subcategories = await fetch(
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
+
 ---
 
-<ul>
+<ul class="store">
   <li>
     <div class="category">
       <p>{data.category}</p>
     </div>
     <ul class="subcategory">
       <li>
-        <p>empty atm</p>
+        {
+          subcategories
+            .filter((sub) => sub.category_id === data.id)
+            .map((sub) => <NavSub data={sub} />)
+        }
       </li>
     </ul>
   </li>
 </ul>
 
 <style>
-  ul {
+  li {
     list-style: none;
   }
 
   .category {
     background-color: var(--accent-color);
     color: var(--primary-color);
-    
   }
 
   p {
     text-align: center;
     color: white;
+    max-width: 160px;
+    height: 40px;
+  }
+
+  a:hover {
+    background-color: blue;
+    color: white;
+  }
+
+  .subcategory {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 </style>
