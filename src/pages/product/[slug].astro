@@ -43,7 +43,7 @@ const { product } = Astro.props;
     <div class="omProduktet">
       <img src={product.image} alt="" />
       <h1>{product.title}</h1>
-      <p>{product.price} DKK</p>
+      <p>{product.price},00 DKK</p>
     </div>
     <div class="purchaseContainer">
       <AntalProdukt />
@@ -89,10 +89,13 @@ const { product } = Astro.props;
     </section>
     <Waitlist />
     <Carousel />
-    <Footer />
   </body>
 
   <style>
+    
+    body{
+      background-color: var(--primary-color);
+    }
     h3 {
       font-family: var(--font-family-secondary);
       font-weight: var(--font-weight-sm);
@@ -106,8 +109,9 @@ const { product } = Astro.props;
     .purchaseContainer {
       display: flex;
       align-items: center;
-      justify-content:space-between;
+      justify-content:center;
       margin: 8% 0 16% 0;
+      gap: 1em;
     }
     img {
       width: 100vw;
@@ -131,6 +135,7 @@ const { product } = Astro.props;
       border-bottom: 1px solid var(--secondary-color);
       border-top: 1px solid var(--secondary-color);
       width: 100vw;
+      margin-bottom: 16%;
     }
     .hide {
       opacity: 0;

@@ -6,15 +6,33 @@ console.log(data);
 <a href={data.slug}>
   <article class="card">
     <img src={data.image} alt="Not Showing" />
-    <h2>{data.title}</h2>
+    <h3>{data.title}</h3>
     <p>{data.price},00 DKK</p>
+    <div class="priceContainer"></div>
   </article>
 </a>
 
 <style>
-  
-  img{
-    width:20vw;
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr;
+    place-self: start;
+  }
+  h3{
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+  }
+  a{
+    text-decoration: none;
+    color: var(--secondary-color);
+  }
+  img {
+    width: 20em;
+    place-self: stretch;
+    object-fit: contain;
+    grid-row: 1/2;
+    grid-column: 1/4;
   }
   input {
     border: none;
