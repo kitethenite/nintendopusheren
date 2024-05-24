@@ -13,7 +13,6 @@ const subcategories = await fetch(
     },
   }
 ).then((res) => res.json());
-
 ---
 
 <ul class="store">
@@ -34,29 +33,53 @@ const subcategories = await fetch(
 </ul>
 
 <style>
+  ul,
   li {
     list-style: none;
+    position: relative;
   }
 
   .category {
     background-color: var(--accent-color);
     color: var(--primary-color);
+    height: 40px;
+    max-width: 160px;
+    width: auto;
+
+    display: grid;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .category:hover {
+    background-color: var(--hover-color);
+  }
+
+  .category:active {
+    background-color: var(--secondary-accent);
   }
 
   p {
     text-align: center;
-    color: white;
-    max-width: 160px;
-    height: 40px;
+    color: var(--primary-color);
   }
 
-  a:hover {
-    background-color: blue;
-    color: white;
-  }
+  /******** here starts the subcategories *********/
 
   .subcategory {
+    list-style: none;
+    padding: 1em;
     display: grid;
-    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+
+  ul ul {
+    position: absolute;
+    top: 100%;
+    display: none;
+  }
+
+  ul li:hover > ul {
+    display: inherit;
   }
 </style>

@@ -36,9 +36,10 @@ const { headliner } = Astro.props;
 
 <style>
   header {
-    background-color: antiquewhite;
     display: grid;
-    grid-template-columns: 1fr 1040px 1fr;
+	grid-template-columns: 1fr minmax(auto, 1040px) 1fr;
+    width: auto;
+    
   }
 
   .icon {

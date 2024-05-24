@@ -48,11 +48,13 @@ const data = await fetch(
 
 <style>
   nav {
-    background-color: aqua;
-
+    padding: 1rem 0 5rem;
     font-family: var(--font-family-primary);
+    display: grid;
+    grid-template-columns: 1fr;
   }
   .top {
+    grid-row: 1;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
@@ -91,14 +93,16 @@ const data = await fetch(
     height: 24px;
   }
 
-  .userarea  img:hover {
+  .userarea img:hover {
     filter: invert(31%) sepia(99%) saturate(1524%) hue-rotate(348deg)
       brightness(89%) contrast(91%);
   }
 
   .storenav {
+    padding: 2rem 0 0;
+    grid-row: 2;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    justify-content: space-between;
+    gap: 2em;
   }
 </style>
