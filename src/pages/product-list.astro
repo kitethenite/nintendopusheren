@@ -1,7 +1,7 @@
 ---
-import Productlist from "../components/Productlist.astro";
 import "../styles/styles.css";
-import Card from "../components/Card.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
 
 const data = await fetch(
 "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?select=*,item:items(*,subcategory:subcategories(*,category:categories(*)))",
@@ -15,35 +15,7 @@ const data = await fetch(
 ).then((res) => res.json());
 // console.log(data)
 ---
-<html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		<h2>here is a h2er</h2>
-		<!-- <Card header="This is header" /> -->
-		<!-- <Card header="This is card 2"/>
-		<Card header="This is third card"/> -->
-	  
-		<section class="products">
-		  {
-			data.map((data) => {
-			  return <Productlist data={data} />;
-			})
-		  }
-		</section>
-	</body>
-</html>
 
-import MainLayout from "../layouts/MainLayout.astro";
-
-
----
 
 <MainLayout>
 	
