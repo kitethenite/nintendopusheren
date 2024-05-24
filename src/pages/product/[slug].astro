@@ -1,9 +1,8 @@
 ---
-import "../../styles/styles.css"
+import "../../styles/styles.css";
 import ProductDescription from "../../components/ProductDescription.astro";
 import Footer from "../../components/Footer.astro";
 import Carousel from "../../components/Carousel.astro";
-
 
 export async function getStaticPaths() {
   const data = await fetch(
@@ -12,37 +11,37 @@ export async function getStaticPaths() {
       method: "GET",
       headers: {
         apikey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
       },
     }
-    ).then((response) => response.json());
-    
-    return data.map((product) => {
-      return {
-        params: { slug: product.slug },
-        props: { product: product },
-      };
-    });
-  }
-  
-  const { product } = Astro.props;
+  ).then((response) => response.json());
 
+  return data.map((product) => {
+    return {
+      params: { slug: product.slug },
+      props: { product: product },
+    };
+  });
+}
 
+const { product } = Astro.props;
 ---
+
 <html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>{product.title}</h1>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
     <div class="omProduktet">
       <img src={product.image} alt="" />
+      <h1>{product.title}</h1>
       <p>{product.price} DKK</p>
     </div>
+    <button class="addItemButton">Tilføj til kurv</button>
     <section id="descriptionRow" class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
@@ -80,102 +79,122 @@ export async function getStaticPaths() {
         <span></span>
       </button>
     </section>
-  </div>
-  <div class="ekstra buttons"></div>
-  </article>
-  <Carousel/>
-  <Footer/>
-	</body>
+    <button class="notificationButton">Giv mig besked når produktet er på lager</button>
+    <Carousel />
+    <Footer />
+  </body>
 </html>
-  
-  
 
 <style>
-img{
-  width: 100vw;
-}
-article {
-  display: grid;
-  grid-template-columns: 1fr;
-  place-self: center;
-  justify-content: center;
-}
-.descriptionBox {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--secondary-color);
-  width: 100vw;
-}
+  .addItemButton{
+    background-color: var(--secondary-accent);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    width: 56vw;
+    height: 5vh;
+  }
+  .notificationButton{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    font-size: 1rem;
+    width: 60vw;
+    height: 10vh;
+    padding: 0 6vw 0 6vw;
+    margin: 16% 0 24% 0;
+    transition: 700ms;
+  }
+  .notificationButton:hover{
+    background-color: var(--secondary-accent);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: 700ms;
+  }
+  img {
+    width: 100vw;
+  }
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-self: center;
+    justify-content: center;
+  }
+  .descriptionBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--secondary-color);
+    width: 100vw;
+  }
 
-.specificationRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--secondary-color);
-  border-top: 1px solid var(--secondary-color);
-  width: 100vw;
-}
-.hide {
-  opacity: 0;
-  height: 0;
-  margin: 0;
-  overflow: hidden;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-}
-.show {
-  opacity: 1;
-  height: auto;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-}
+  .specificationRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--secondary-color);
+    border-top: 1px solid var(--secondary-color);
+    width: 100vw;
+  }
+  .hide {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+  .show {
+    opacity: 1;
+    height: auto;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
 
-.specificationBox {
-  display: grid;
-  grid-template-columns: 24vw 24vw;
-  column-gap: 12vw;
-}
-button {
-  grid-area: 1/2/1/2;
-  place-self: start end;
-  color: var(--secondary-color);
-  background: var(--primary-color);
-  width: 2em;
-  height: 2em;
-  border: 0;
-  font-size: 1.5em;
-  position: relative;
-}
+  .specificationBox {
+    display: grid;
+    grid-template-columns: 24vw 24vw;
+    column-gap: 12vw;
+  }
+  button {
+    grid-area: 1/2/1/2;
+    place-self: start end;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    width: 2em;
+    height: 2em;
+    border: 0;
+    font-size: 1.5em;
+    position: relative;
+  }
 
-button span {
-  position: absolute;
-  transition: 300ms;
-  background: var(--secondary-color);
-}
+  button span {
+    position: absolute;
+    transition: 300ms;
+    background: var(--secondary-color);
+  }
 
-/* Her er det hvor jeg laver et "+"" tegn */
-button span:first-child {
-  top: 20%;
-  bottom: 25%;
-  width: 1px;
-  left: 50%;
-}
+  /* Her er det hvor jeg laver et "+"" tegn */
+  button span:first-child {
+    top: 20%;
+    bottom: 25%;
+    width: 1px;
+    left: 50%;
+  }
 
-button span:last-child {
-  left: 25%;
-  right: 25%;
-  height: 1px;
-  top: 45%;
-}
+  button span:last-child {
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    top: 45%;
+  }
 
-/* når jeg klikker på "+" animeres den om til et "-" */
-.collapse span {
-  transform: rotate(90deg);
-}
+  /* når jeg klikker på "+" animeres den om til et "-" */
+  .collapse span {
+    transform: rotate(90deg);
+  }
 
-.collapse span:last-child {
-  left: 50%;
-  right: 50%;
-}
+  .collapse span:last-child {
+    left: 50%;
+    right: 50%;
+  }
 </style>
 <script>
   let specificationRow = document.querySelector(".specificationRow");
@@ -197,10 +216,3 @@ button span:last-child {
     showSpecificationsBtn.classList.toggle("collapse");
   });
 </script>
-
-
-
-
-
-
-  
