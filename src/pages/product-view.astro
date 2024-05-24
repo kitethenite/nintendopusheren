@@ -1,19 +1,34 @@
 ---
+import "../styles/styles.css";
+import Footer from "../components/Footer.astro";
+import ProductDescription from "../components/ProductDescription.astro";
+import Carousel from "../components/Carousel.astro";
+import Card from "../components/Card.astro";
 
+const data = await fetch(
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
+console.log(data);
 ---
 
 <html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<link rel="stylesheet" href="https://use.typekit.net/kzc0qgq.css">
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+    <section class="cards_container"></section>
+    <Carousel /></body
+  >
 </html>

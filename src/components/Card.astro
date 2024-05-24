@@ -1,0 +1,26 @@
+---
+const { data } = Astro.props;
+console.log(data);
+---
+
+<a href={data.slug}>
+  <article class="card">
+    <img src={data.image} alt="Not Showing" />
+    <h2>{data.title}</h2>
+    <p>{data.price},00 DKK</p>
+  </article>
+</a>
+
+<style>
+  
+  img{
+    width:20vw;
+  }
+  input {
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    padding: 1em 1.5em 1em 1.5em;
+    font-size: 1rem;
+  }
+</style>
