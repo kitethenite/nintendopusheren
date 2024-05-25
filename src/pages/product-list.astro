@@ -14,6 +14,23 @@ const data = await fetch(
     },
   }
 ).then((res) => res.json());
+ 
+//this down here is just a test
+export async function getStaticPaths() {
+  const subcategories = await fetch(
+    "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories",
+    {
+      headers: {
+        apikey:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+      },
+    }
+  ).then((res) => res.json());
+
+  return subcategories.map((subcategory) => ({
+    params: { subcategory: subcategory.slug },
+  }));
+}
+
 // console.log(data)
 ---
 
