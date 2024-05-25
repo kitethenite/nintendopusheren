@@ -11,17 +11,19 @@
     <a href="#">Handelsbetingelser</a>
   </nav>
   <div class="openingsContainer">
-    <div class="openingDays">
-      <h3>Åbingstider</h3>
-      <p>Man-Fre</p>
-      <p>Lør</p>
-      <p>Søn</p>
-    </div>
-    <div class="openingHours">
-      <p>12:00 - 17:30</p>
-      <p>11:00 - 16:00</p>
-      <p>12:00 - 15:00</p>
-      <p>Kun første søndag hver måned</p>
+    <h3>Åbingstider</h3>
+    <div class="openingsInformation">
+      <div class="openingDays">
+        <p>Man-Fre</p>
+        <p>Lør</p>
+        <p>Søn</p>
+      </div>
+      <div class="openingHours">
+        <p>12:00 - 17:30</p>
+        <p>11:00 - 16:00</p>
+        <p>12:00 - 15:00</p>
+        <p>Kun første søndag hver måned</p>
+      </div>
     </div>
   </div>
   <div class="contactInformation">
@@ -46,52 +48,67 @@
 
 </footer>
 
+
+
+
 <style>
-  @media (min-width: 1440px) {
+  @media (max-width: 1440px) {
+    *{
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
     footer {
+      display: grid;
+      grid-template-columns: 11em 1fr;
+      grid-template-rows: 1fr 1fr;
       background-color: #3c4e5a;
-      padding: 5em 0 2em 0;
+      color: var(--primary-color);
+      padding: 5%;
+    }
+    .generalInformation{
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1em;
     }
     a{
-      display: grid;
-      color: var(--primary-color);
       text-decoration: none;
-      padding: 8%;
+      color: var(--primary-color);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-light)
     }
-    .section1 {
-      padding-top: 3em;
+    p{
+      font-size: var(--font-size-xs);
     }
-    .section2 p {
-      text-decoration: underline;
+    h3{
+      font-family: var(--font-family-primary);
+      font-weight: var(--font-weight-regular);
+      padding: 0.5em 0 0.5em 0;
     }
-    .section3 {
-      display: flex;
+    .openingsInformation{
+      display: grid;
+      grid-template-columns: 5em 6em;
       align-items: baseline;
     }
-    .OpeningHours {
+    .openingsContainer .openingDays{
       display: flex;
+      flex-direction: column;
+      gap: 1em;
     }
-    .Hours {
-      text-align: right;
+    .openingsContainer .openingHours{
+      display: flex;
+      grid-column-start: 2;
+      flex-direction: column;
+      gap: 1em;
     }
-
-    p {
-      color: var(--primary-color);
-    }
-    h2 {
-      color: var(--primary-color);
+    .contactInformation{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
     }
   }
 
-  @media (max-width: 1440px) {
-    footer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: first baseline;
-      background-color: var(--secondary-accent);
-    }
-   
-  }
+  
 </style>
