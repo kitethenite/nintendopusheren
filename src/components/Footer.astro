@@ -126,6 +126,80 @@
       scale: 1.2;
     }
   }
+  @media (min-width: 1440px) {
+    *{
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+    footer {
+      display: grid;
+      grid-template-columns: 11em 1fr;
+      grid-template-rows: 1fr 1fr;
+      background-color: #3c4e5a;
+      color: var(--primary-color);
+      padding: 5%;
+    }
+    .generalInformation{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1em;
+    }
+    a{
+      text-decoration: none;
+      color: var(--primary-color);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-light)
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+    p{
+      font-size: var(--font-size-xs);
+    }
+    h3{
+      font-family: var(--font-family-primary);
+      font-weight: var(--font-weight-regular);
+      padding: 0.5em 0 0.5em 0;
+    }
+    .openingsInformation{
+      display: grid;
+      grid-template-columns: 5em 6em;
+      align-items: baseline;
+    }
+    .openingsContainer .openingDays{
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .openingsContainer .openingHours{
+      display: flex;
+      grid-column-start: 2;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .contactInformation{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .socialMedia{
+      display: flex;
+      align-items: last baseline;
+      gap: 0.5em;
+    }
+    img{
+      width: 50px;
+      transition: 300ms;
+      scale: 1;
+    }
+    img:hover{
+      transition: 300ms;
+      scale: 1.2;
+    }
+  }
 
   
 </style>
