@@ -2,12 +2,45 @@
 const { data } = Astro.props;
 ---
 
-<a href={`product/${data.slug}`}>
+<a href={`shop/${data.subcategory_name}/items/${data.slug}`}>
   <article class="productlist">
     <img src={data.image} alt="text" />
     <h3>{data.title}</h3>
-    <div class="price">{data.price} DKK</div>
+    <div class="price">{data.price},00 DKK</div>
     <div class="stock">{data.in_stock}</div>
     <div class="buy">Tilføj kurv</div>
   </article>
 </a>
+
+<style>
+  .productlist {
+    width: 100%;
+    max-width: 320px;
+
+    height: 480px;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    border: black solid 1px;
+    font-family: var( --font-family-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-light);
+  }
+
+
+  .buy {
+    background-color: var(--secondary-accent);
+    padding: 1em;
+    width: fit-content;
+    color: var(--primary-color);
+    
+  }
+</style>

@@ -1,10 +1,11 @@
 ---
-import "../styles/styles.css";
+import Productlist from "../components/Productlist.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
+import "../styles/styles.css";
 
 const data = await fetch(
-"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?select=*,item:items(*,subcategory:subcategories(*,category:categories(*)))",
+"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
   {
     method: "GET",
     headers: {
@@ -16,7 +17,29 @@ const data = await fetch(
 // console.log(data)
 ---
 
-
-<MainLayout>
-	
+<MainLayout headliner="This is the product list">
+<h1>titel om produkterna</h1>
+<p>text om produkterna</p>
+  <section class="products">
+    {
+      data.map((data) => {
+        return <Productlist data={data} />;
+      })
+    }
+  </section>
 </MainLayout>
+
+<style>
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    width: 100%;
+    max-width: 1040px;
+
+    margin: auto;
+    justify-content: center;
+    
+    padding: 5rem 0;
+  }
+</style>
