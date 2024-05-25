@@ -36,13 +36,13 @@
   </div>
   <nav class="socialMedia">
     <a href="#">
-      <img src="#" alt="Instagram">
+      <img src="../../public/assets/instagram.svg" alt="Instagram">
     </a>
     <a href="#">
-      <img src="#" alt="Facebook">
+      <img src="../../public/assets/facebook.svg" alt="Facebook">
     </a>
     <a href="#">
-      <img src="#" alt="YouTube">
+      <img src="../../public/assets/youtube.svg" alt="YouTube">
     </a>
   </nav>
 
@@ -79,6 +79,9 @@
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-light)
     }
+    a:hover{
+      text-decoration: underline;
+    }
     p{
       font-size: var(--font-size-xs);
     }
@@ -107,6 +110,21 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
+    }
+    .socialMedia{
+      display: flex;
+      justify-content: center;
+      align-items: last baseline;
+      gap: 0.5em;
+    }
+    img{
+      width: 50px;
+      transition: 300ms;
+      scale: 1;
+    }
+    img:hover{
+      transition: 300ms;
+      scale: 1.2;
     }
   }
 
