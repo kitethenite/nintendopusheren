@@ -1,30 +1,31 @@
 ---
-const { tekst } = Astro.props;
+const { tekst, buttonColor, hoverButtonColor, class: className } = Astro.props;
 ---
 
-<button>
-  <img src="images/button.svg" alt="" />
+<button
+  class={className}
+  style={`--button-bg-color: ${buttonColor}; --hover-button-bg-color: ${hoverButtonColor};`}>
   <a href="#">{tekst}</a>
 </button>
 
 <style>
   button {
-    background-color: transparent;
+    width: 20.6rem;
+    height: 3rem;
+    box-shadow: none;
     border: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
+    background-color: var(--button-bg-color, #f0f0f0);
   }
 
-  img {
-    grid-area: 1/1;
+  button:hover {
+    background-color: var(--hover-button-bg-color, #dcdcdc);
   }
 
   a {
-    color: var(--accent-color);
-    grid-area: 1/1;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
     text-decoration: none;
-    font-family: var(--font-family-tertiary);
-    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
   }
 </style>
