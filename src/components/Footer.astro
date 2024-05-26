@@ -3,7 +3,6 @@
 ---
 
 <footer>
-
   <nav class="generalInformation">
     <a href="#">Gavekort</a>
     <a href="#">Levering</a>
@@ -28,178 +27,185 @@
   </div>
   <div class="contactInformation">
     <h3>Adresse</h3>
-    <p>Ydungsgade 4-6, kælderen 22 Kbh N</p>
+    <a
+      href="https://www.google.com/maps/place/Nintendopusheren/@55.6988114,12.5527197,20.13z/data=!4m15!1m8!3m7!1s0x46525253978fc633:0xe7727efe94e8e6d0!2sYdunsgade+4,+2200+K%C3%B8benhavn!3b1!8m2!3d55.6987579!4d12.5529088!16s%2Fg%2F11csg3sljr!3m5!1s0x465253b629f7fff1:0xeb40e44e281b3414!8m2!3d55.6987864!4d12.5529558!16s%2Fg%2F11hz9rh0s5?entry=ttu"
+      target="_blank">Ydungsgade 4-6, kælderen 22 Kbh N</a
+    >
     <h3>Email</h3>
-    <a href=mailto:“kontakt@nintendopusheren.dk”>kontakt@nintendopusheren.dk</a>
+    <a href="mailto:“kontakt@nintendopusheren.dk”"
+      >kontakt@nintendopusheren.dk</a
+    >
     <h3>Telefon</h3>
     <a href="tel:60571282">60 57 12 82</a>
   </div>
   <nav class="socialMedia">
     <a href="#">
-      <img src="../../public/assets/instagram.svg" alt="Instagram">
+      <img src="../../public/assets/instagram.svg" alt="Instagram" />
     </a>
     <a href="#">
-      <img src="../../public/assets/facebook.svg" alt="Facebook">
+      <img src="../../public/assets/facebook.svg" alt="Facebook" />
     </a>
     <a href="#">
-      <img src="../../public/assets/youtube.svg" alt="YouTube">
+      <img src="../../public/assets/youtube.svg" alt="YouTube" />
     </a>
   </nav>
-
 </footer>
 
-
-
-
 <style>
+  /*MOBILESITE*/
   @media (max-width: 1440px) {
-    *{
+    * {
       display: inline-block;
       padding: 0;
       margin: 0;
     }
     footer {
       display: grid;
-      grid-template-columns: 11em 1fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       background-color: #3c4e5a;
       color: var(--primary-color);
       padding: 5%;
     }
-    .generalInformation{
+    .generalInformation {
       display: flex;
       justify-content: center;
       flex-direction: column;
       gap: 1em;
     }
-    a{
+    a {
       text-decoration: none;
       color: var(--primary-color);
       font-family: var(--font-family-secondary);
       font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-light)
+      font-weight: var(--font-weight-light);
     }
-    a:hover{
+    a:hover {
       text-decoration: underline;
     }
-    p{
+    p {
       font-size: var(--font-size-xs);
     }
-    h3{
+    h3 {
       font-family: var(--font-family-primary);
       font-weight: var(--font-weight-regular);
       padding: 0.5em 0 0.5em 0;
     }
-    .openingsInformation{
+    .openingsInformation {
       display: grid;
       grid-template-columns: 5em 6em;
       align-items: baseline;
     }
-    .openingsContainer .openingDays{
+    .openingsContainer .openingDays {
       display: flex;
       flex-direction: column;
       gap: 1em;
     }
-    .openingsContainer .openingHours{
+    .openingsContainer .openingHours {
       display: flex;
       grid-column-start: 2;
       flex-direction: column;
       gap: 1em;
     }
-    .contactInformation{
+    .contactInformation {
       display: flex;
       justify-content: center;
       flex-direction: column;
     }
-    .socialMedia{
+    .socialMedia {
       display: flex;
       align-items: last baseline;
       gap: 0.5em;
     }
-    img{
+    img {
       width: 50px;
       transition: 300ms;
       scale: 1;
     }
-    img:hover{
-      transition: 300ms;
-      scale: 1.2;
-    }
-  }
-  @media (min-width: 1440px) {
-    *{
-      display: inline-block;
-      padding: 0;
-      margin: 0;
-    }
-    footer {
-      display: grid;
-      grid-template-columns: 11em 1fr;
-      grid-template-rows: 1fr 1fr;
-      background-color: #3c4e5a;
-      color: var(--primary-color);
-      padding: 5%;
-    }
-    .generalInformation{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1em;
-    }
-    a{
-      text-decoration: none;
-      color: var(--primary-color);
-      font-family: var(--font-family-secondary);
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-light)
-    }
-    a:hover{
-      text-decoration: underline;
-    }
-    p{
-      font-size: var(--font-size-xs);
-    }
-    h3{
-      font-family: var(--font-family-primary);
-      font-weight: var(--font-weight-regular);
-      padding: 0.5em 0 0.5em 0;
-    }
-    .openingsInformation{
-      display: grid;
-      grid-template-columns: 5em 6em;
-      align-items: baseline;
-    }
-    .openingsContainer .openingDays{
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-    .openingsContainer .openingHours{
-      display: flex;
-      grid-column-start: 2;
-      flex-direction: column;
-      gap: 1em;
-    }
-    .contactInformation{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .socialMedia{
-      display: flex;
-      align-items: last baseline;
-      gap: 0.5em;
-    }
-    img{
-      width: 50px;
-      transition: 300ms;
-      scale: 1;
-    }
-    img:hover{
+    img:hover {
       transition: 300ms;
       scale: 1.2;
     }
   }
 
-  
+  /*DESKTOPSITE*/
+  @media (min-width: 834px) {
+    * {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+    footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 8vh;
+      column-gap: 16%;
+      background-color: #3c4e5a;
+      color: var(--primary-color);
+      padding: 5%;
+    }
+    .generalInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1em;
+    }
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-light);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    p {
+      font-size: var(--font-size-md);
+    }
+    h3 {
+      font-size: var(--font-size-md);
+      font-family: var(--font-family-secondary);
+      font-weight: var(--font-weight-regular);
+      padding: 0.5em 0 0.5em 0;
+    }
+    .openingsInformation {
+      display: grid;
+      grid-template-columns: 8em 8em;
+      align-items: baseline;
+    }
+    .openingsContainer .openingDays {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .openingsContainer .openingHours {
+      display: flex;
+      grid-column-start: 2;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .contactInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      grid-area: 2/3/1/2;
+    }
+    .socialMedia {
+      display: flex;
+      align-items: last baseline;
+      gap: 0.5em;
+      grid-area: 2/3/2/2;
+      place-self: center;
+    }
+    img {
+      width: 4.5vw;
+      transition: 300ms;
+      scale: 1;
+    }
+    img:hover {
+      transition: 300ms;
+      scale: 1.2;
+    }
+  }
 </style>
