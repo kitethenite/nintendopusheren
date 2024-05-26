@@ -87,7 +87,8 @@
       font-size: var(--font-size-xs);
     }
     h3 {
-      font-family: var(--font-family-primary);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-md);
       font-weight: var(--font-weight-regular);
       padding: 0.5em 0 0.5em 0;
     }
@@ -139,7 +140,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 1fr 8vh;
-      column-gap: 16%;
+      column-gap: 20%;
+      row-gap: 16%;
       background-color: #3c4e5a;
       color: var(--primary-color);
       padding: 5%;
@@ -154,14 +156,14 @@
       text-decoration: none;
       color: var(--primary-color);
       font-family: var(--font-family-secondary);
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-xs);
       font-weight: var(--font-weight-light);
     }
     a:hover {
       text-decoration: underline;
     }
     p {
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-xs);
     }
     h3 {
       font-size: var(--font-size-md);
@@ -189,6 +191,7 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
+      line-height: 150%;
       grid-area: 2/3/1/2;
     }
     .socialMedia {
