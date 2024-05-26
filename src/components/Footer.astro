@@ -1,7 +1,10 @@
 ---
-
+import MarioFooter from "./MarioFooter.astro";
 ---
 
+<div class="animation" style="margin: 0; padding: 0; width: 100%;">
+  <MarioFooter />
+</div>
 <footer>
   <nav class="generalInformation">
     <a href="#">Gavekort</a>
@@ -67,6 +70,7 @@
       color: var(--primary-color);
       padding: 5%;
     }
+
     .generalInformation {
       display: flex;
       justify-content: center;
@@ -189,14 +193,14 @@
       flex-direction: column;
       gap: 1em;
     }
-    .contactInformation h3{
+    .contactInformation h3 {
       padding: 0.5em 0 0.5em 0;
     }
     .contactInformation {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      
+
       grid-area: 2/3/1/2;
     }
     .socialMedia {
