@@ -1,0 +1,42 @@
+---
+const { product } = Astro.props;
+
+---
+
+<!-- <a href={`/${product.slug}`}> -->
+  <a href={`/${product.slug}/${product.item_slug}/${product.slug}`}></a>
+  <article class="productlist">
+    <img src={product.image} alt={product.title} />
+    <h3>{product.title}</h3>
+    <div class="price">{product.price} DKK</div>
+    <div class="stock">{product.in_stock}</div>
+    <div class="buy">Tilføj kurv</div>
+  </article>
+</a>
+
+<style>
+  .productlist {
+    width: 100%;
+    max-width: 320px;
+    /* border: solid 1px; */
+    height: 100%;
+    max-height: 480px;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: red;
+  }
+
+  .buy {
+    background-color: rgb(255, 253, 251);
+    padding: 1em;
+    width: fit-content;
+  }
+</style>
