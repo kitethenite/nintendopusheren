@@ -10,14 +10,13 @@ const { data, subcategory } = Astro.props;
     <div class="img-container">
       <img src={data.image} alt="text" />
       <GemProdukt class="gem" />
-
-      <div class="text-container">
-        <h3>{data.title}</h3>
-        <div class="origin">{data.country_origin}</div>
-        <div class="price">{data.price},00 DKK</div>
-        <div class="stock">{data.in_stock}</div>
-        <div class="buy">Tilføj kurv</div>
-      </div>
+    </div>
+    <div class="text-container">
+      <h3>{data.title}</h3>
+      <div class="origin">{data.country_origin}</div>
+      <div class="price">{data.price},00 DKK</div>
+      <div class="stock">{data.in_stock}</div>
+      <div class="buy">Tilføj kurv</div>
     </div>
   </article>
 
@@ -31,18 +30,20 @@ const { data, subcategory } = Astro.props;
 
     .img-container {
       display: grid;
+      grid-template-columns: 1fr 1fr;
     }
+
     img {
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: cover;
-      grid-column: 1;
+      grid-column: 1/-1;
       grid-row: 1;
     }
-    .gem {
-      grid-column: 1;
-      grid-row: 1;
 
+    .gem {
+      grid-column: 2/-1;
+      grid-row: 1;
     }
 
     a {

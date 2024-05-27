@@ -5,7 +5,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/styles.css";
 
 const data = await fetch(
-"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
   {
     method: "GET",
     headers: {
@@ -14,14 +14,15 @@ const data = await fetch(
     },
   }
 ).then((res) => res.json());
- 
+
 //this down here is just a test
 export async function getStaticPaths() {
   const subcategories = await fetch(
     "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories",
     {
       headers: {
-        apikey:  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
       },
     }
   ).then((res) => res.json());
@@ -35,8 +36,10 @@ export async function getStaticPaths() {
 ---
 
 <MainLayout headliner="This is the product list">
-<h1>titel om produkterna</h1>
-<p>text om produkterna</p>
+  <div class="text-container">
+    <h1>titel om produkterna</h1>
+    <p>text om produkterna</p>
+  </div>
   <section class="products">
     {
       data.map((data) => {
@@ -47,6 +50,11 @@ export async function getStaticPaths() {
 </MainLayout>
 
 <style>
+ .text-container {
+    display: grid;
+    text-align: center;
+  }
+
   .products {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -56,7 +64,7 @@ export async function getStaticPaths() {
 
     margin: auto;
     justify-content: center;
-    
+
     padding: 5rem 0;
   }
 </style>
