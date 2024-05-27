@@ -10,11 +10,18 @@ import Email from "./Email.astro";
     const popUp = document.querySelector(".pop-up");
     const popUpContainer = document.querySelector(".pop-up-container");
     const closeButton = document.querySelector(".pop-up span");
+    const waitlistbutton = document.querySelector(".waitlistbutton");
 
     popUpButton.addEventListener("click", () => {
       popUpContainer.style.display = "block";
       popUp.style.display = "block";
       popUpButton.style.display = "none";
+    });
+
+    waitlistbutton.addEventListener("click", () => {
+      popUpContainer.style.display = "none";
+      popUp.style.display = "none";
+      popUpButton.style.display = "block";
     });
 
     closeButton.addEventListener("click", () => {
@@ -39,6 +46,7 @@ import Email from "./Email.astro";
     <p>Tilmeld dig for at få besked når produktet er tilbage på lager.</p>
     <Email />
     <WaitlistButton
+      class="waitlistbutton"
       hoverButtonColor=" var(--accent-color)"
       tekst="Giv mig besked"
       buttonColor="var(--accent-color)"
@@ -64,11 +72,12 @@ import Email from "./Email.astro";
     width: 22rem;
     height: 350px;
     justify-content: center;
-    display: flex;
     flex-direction: column;
-    margin: 10vh auto;
+    position: fixed;
+    top: 40%;
+    left: 35%;
     background: var(--primary-color);
-    position: relative;
+
     z-index: 1;
     border: solid 1px #121212;
   }
