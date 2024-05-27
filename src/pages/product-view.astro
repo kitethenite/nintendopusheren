@@ -1,10 +1,7 @@
 ---
 import "../styles/styles.css";
 import MainLayout from "../layouts/MainLayout.astro";
-import Footer from "../components/Footer.astro";
-import ProductDescription from "../components/ProductDescription.astro";
 import Carousel from "../components/Carousel.astro";
-import Card from "../components/Card.astro";
 
 const data = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
@@ -30,7 +27,9 @@ console.log(data);
   <body>
     <h1>Astro</h1>
     <section class="cards_container"></section>
-    <Carousel /></body
-  >
-</html>
-<MainLayout headliner="product view" />
+    >
+    </html>
+    <MainLayout headliner="product view">
+      
+      <Carousel /></body
+</MainLayout>
