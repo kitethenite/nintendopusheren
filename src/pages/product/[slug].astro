@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
   return data.map((product) => {
     return {
-      params: { slug: product.slug },
+      params: { slug: product.slug }, /*Generere de unikke url'er ud fra productlist */
       props: { product: product },
     };
   });
@@ -31,111 +31,82 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 ---
 
-<html lang="da">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <div class="omProduktet">
-      <img src={product.image} alt="" />
-      <h1>{product.title}</h1>
-      <p>{product.price},00 DKK</p>
-    </div>
-    <div class="purchaseContainer">
-      <AntalProdukt />
-      <PurchaseButton tekst="Tilføj til kurv" />
-      <GemProdukt />
-    </div>
-    <section id="descriptionRow" class="descriptionBox">
-      <h3>Beskrivelse</h3>
-      <p id="descriptionContent" class="hide">
-        {product.description}
-      </p>
-      <button id="showDescription" class="DescBtn">
-        <span></span>
-        <span></span>
-      </button>
-    </section>
-    <section class="specificationRow">
-      <h3>Specifikationer</h3>
-      <div id="specificationContent" class="hide">
-        <div class="specificationBox">
-          <div>
-            <h4 class="condition">Condition</h4>
-            <p class="condition_desc">{product.condition}</p>
-          </div>
-          <div>
-            <h4 class="created_at">Created At</h4>
-            <p class="created_at_desc">{product.created_at}</p>
-          </div>
-          <div>
-            <h4 class="country_origin">Country Origin</h4>
-            <p class="country_origin_desc">{product.country_origin}</p>
-          </div>
-          <div>
-            <h4 class="game_condition">Game Condition</h4>
-            <p class="game_condition_desc">{product.game_condition}</p>
+
+    <div class="singleViewContainer">
+      <div class="omProduktet">
+        <img src={product.image} alt="" />
+        <h1>{product.title}</h1>
+        <p>{product.price},00 DKK</p>
+      </div>
+      <div class="purchaseContainer">
+        <AntalProdukt />
+        <PurchaseButton tekst="Tilføj til kurv" />
+        <GemProdukt />
+      </div>
+      <section id="descriptionRow" class="descriptionBox">
+        <h3>Beskrivelse</h3>
+        <p id="descriptionContent" class="hide">
+          {product.description}
+        </p>
+        <button id="showDescription" class="DescBtn">
+          <span></span>
+          <span></span>
+        </button>
+      </section>
+      <section class="specificationRow">
+        <h3>Specifikationer</h3>
+        <div id="specificationContent" class="hide">
+          <div class="specificationBox">
+            <div>
+              <h4 class="condition">Condition</h4>
+              <p class="condition_desc">{product.condition}</p>
+            </div>
+            <div>
+              <h4 class="created_at">Created At</h4>
+              <p class="created_at_desc">{product.created_at}</p>
+            </div>
+            <div>
+              <h4 class="country_origin">Country Origin</h4>
+              <p class="country_origin_desc">{product.country_origin}</p>
+            </div>
+            <div>
+              <h4 class="game_condition">Game Condition</h4>
+              <p class="game_condition_desc">{product.game_condition}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <button id="showSpecificationsBtn">
-        <span></span>
-        <span></span>
-      </button>
-    </section>
+        <button id="showSpecificationsBtn">
+          <span></span>
+          <span></span>
+        </button>
+      </section>
+    </div>
     <Waitlist />
     <Carousel />
-    <Footer/>
-  </body>
+    <Footer />
+ 
 
   <style>
+
     
-    body{
-      background-color: var(--primary-color);
-    }
-    h3 {
-      font-family: var(--font-family-secondary);
-      font-weight: var(--font-weight-sm);
-      font-size: var(--font-size-sm);
-    }
-    h4 {
-      font-family: var(--font-family-secondary);
-      font-weight: var(--font-weight-sm);
-      font-size: var(--font-size-sm);
-    }
-    .purchaseContainer {
+    /*.purchaseContainer {
       display: flex;
       align-items: center;
-      justify-content:center;
       margin: 8% 0 16% 0;
       gap: 1em;
-    }
-    img {
-      width: 100vw;
-    }
-    article {
-      display: grid;
-      grid-template-columns: 1fr;
-      place-self: center;
-      justify-content: center;
-    }
+    }*/
     .descriptionBox {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-top: 1px solid var(--secondary-color);
-      width: 100vw;
+      width: 100%;
     }
-
     .specificationRow {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--secondary-color);
       border-top: 1px solid var(--secondary-color);
-      width: 100vw;
+      width: 100%;
       margin-bottom: 16%;
     }
     .hide {
@@ -152,7 +123,6 @@ const { product } = Astro.props;
       transition-duration: 300ms;
       transition-timing-function: ease-in-out;
     }
-
     .specificationBox {
       display: grid;
       grid-template-columns: 24vw 24vw;
@@ -169,13 +139,11 @@ const { product } = Astro.props;
       font-size: 1.5em;
       position: relative;
     }
-
     button span {
       position: absolute;
       transition: 300ms;
       background: var(--secondary-color);
     }
-
     /* Her er det hvor jeg laver et "+"" tegn */
     button span:first-child {
       top: 20%;
@@ -183,19 +151,16 @@ const { product } = Astro.props;
       width: 1px;
       left: 50%;
     }
-
     button span:last-child {
       left: 25%;
       right: 25%;
       height: 1px;
       top: 45%;
     }
-
     /* når jeg klikker på "+" animeres den om til et "-" */
     .collapse span {
       transform: rotate(90deg);
     }
-
     .collapse span:last-child {
       left: 50%;
       right: 50%;
