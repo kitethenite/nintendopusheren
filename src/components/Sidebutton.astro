@@ -15,11 +15,23 @@ const { tal } = Astro.props;
     border-style: solid;
     box-shadow: 6px 6px var(--secondary-accent);
   }
+
+  button:hover {
+    background-color: #ffb3a2;
+  }
+
+  button.clicked {
+    background-color: var(--accent-color);
+  }
   a {
     text-decoration: none;
     font-size: var(--font-size-lg);
     font-family: var(--font-family-primary);
     color: var(--secondary-accent);
     font-weight: var(--font-weight-regular);
+  }
+
+  a.clicked {
+    color: var(--primary-color);
   }
 </style>
