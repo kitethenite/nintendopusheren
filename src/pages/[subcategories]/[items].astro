@@ -52,8 +52,8 @@ const products = await fetch(
         .filter((product) => product.item_id === item.id)
         .map((product) => {
           return (
-            <a href={`/${item.subcategory_name}/${item.slug}/${product.slug}`}>
-              <ItemList product={product} />
+            <a href={`${item.subcategory_name}/${item.slug}/${product.slug}`}>
+              <ItemList product={product}/>
             </a>
           );
         })
