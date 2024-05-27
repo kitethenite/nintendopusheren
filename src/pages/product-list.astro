@@ -1,5 +1,7 @@
 ---
 import Productlist from "../components/Productlist.astro";
+
+import Sidenavigation from "../components/Sidenavigation.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 import "../styles/styles.css";
@@ -47,10 +49,13 @@ export async function getStaticPaths() {
       })
     }
   </section>
+  <div class="pagenav">
+    <Sidenavigation />
+  </div>
 </MainLayout>
 
 <style>
- .text-container {
+  .text-container {
     display: grid;
     text-align: center;
   }
@@ -66,5 +71,11 @@ export async function getStaticPaths() {
     justify-content: center;
 
     padding: 5rem 0;
+  }
+
+  .pagenav {
+    display: grid;
+    justify-content: center;
+    padding: 0 0 5rem;
   }
 </style>
