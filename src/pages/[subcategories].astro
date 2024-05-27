@@ -1,5 +1,5 @@
 ---
-// src/pages/[test].astro
+// src/pages/[subcategories].astro
 
 // getStaticPaths video af Jonas
 
@@ -18,13 +18,12 @@ export async function getStaticPaths() {
     }
   ).then((res) => res.json());
 
-  return data.map((subName) => {
-    return {
-      params: { test: subName.slug },
-      props: { subName },
-    };
-  });
+  return data.map((subName) => ({
+    params: { subcategories: subName.slug }, 
+    props: { subName }, 
+  }));
 }
+const { subName } = Astro.props;
 
 const items = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items",
@@ -37,7 +36,6 @@ const items = await fetch(
   }
 ).then((res) => res.json());
 
-const { subName } = Astro.props;
 // console.log(subName)
 ---
 
@@ -56,6 +54,7 @@ const { subName } = Astro.props;
               </a>
             </div>
           );
-        })}
+        })
+    }
   </section>
 </MainLayout>

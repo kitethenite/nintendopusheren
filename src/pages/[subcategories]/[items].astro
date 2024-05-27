@@ -1,5 +1,5 @@
 ---
-// src/pages/[test]/[teststep2].astro
+// src/pages/[subcategories]/[items].astro
 
 // build a product list for the selected items, with a dynamic path
 
@@ -22,8 +22,8 @@ export async function getStaticPaths() {
   return items.map((item) => {
     return {
       params: {
-        test: item.category_slug,
-        teststep2: item.slug
+        subcategories: item.category_slug,
+        items: item.slug
       },
       props: { item },
     };

@@ -1,5 +1,5 @@
 ---
-// src/pages/[test]/[teststep2]/[singleview].astro
+// src/pages/[subcategories]/[items]/[singleview].astro
 
 import MainLayout from "../../../layouts/MainLayout.astro";
 
@@ -15,18 +15,15 @@ export async function getStaticPaths() {
     }
   ).then((response) => response.json());
 
-  return products.map((product) => {
-    return {
-      params: {
-        test: product.subcategory_slug,
-        teststep2: product.item_slug,
-        singleview: product.slug,
-      },
-      props: { product },
-    };
-  });
+  return products.map((product) => ({
+    params: {
+      subcategories: product.subcategory_slug,
+      items: product.item_slug,
+      singleview: product.slug,
+    },
+    props: { product },
+  }));
 }
-
 const { product } = Astro.props;
 ---
 
