@@ -27,7 +27,6 @@ const data = await fetch(
 
     // Handle scrollbar thumb drag
     scrollbarThumb.addEventListener("mousedown", (e) => {
-      const startX = e.clientX;
       const thumbPosition = scrollbarThumb.offsetLeft;
       const maxThumbPosition =
         sliderScrollbar.getBoundingClientRect().width -
@@ -35,7 +34,6 @@ const data = await fetch(
 
       // Update thumb position on mouse move
       const handleMouseMove = (e) => {
-        const deltaX = e.clientX - startX;
         const newThumbPosition = thumbPosition + deltaX;
         // Ensure the scrollbar thumb stays within bounds
         const boundedPosition = Math.max(
