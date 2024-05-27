@@ -1,21 +1,31 @@
-<button class="button_red button_blue">
-  <a href="#">Tilmeld </a>
+---
+const { tekst, buttonColor, hoverButtonColor, class: className } = Astro.props;
+---
+
+<button
+  class={className}
+  style={`--button-bg-color: ${buttonColor}; --hover-button-bg-color: ${hoverButtonColor};`}>
+  <a href="#">{tekst}</a>
 </button>
 
 <style>
   button {
+    width: 20.6rem;
+    height: 3rem;
     box-shadow: none;
     border: none;
-    width: 5rem;
-    height: 3rem;
-    background-color: var(--secondary-accent);
+    background-color: var(--button-bg-color, #f0f0f0);
+  }
+
+  button:hover {
+    background-color: var(--hover-button-bg-color, #dcdcdc);
   }
 
   a {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-sm);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
     text-decoration: none;
     color: var(--primary-color);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-medium);
   }
 </style>

@@ -6,53 +6,64 @@
       id="productCount"
       readonly
     />
-    <div class="antal">
-      <button class="minus-button">
+      <button class="minus-button">-
         <i class="fa fa-minus"></i>
       </button>
-      <button class="plus-button">
+      <button class="plus-button">+
         <i class="fa fa-plus"></i>
       </button>
-    </div>
   </div>
   
   <style>
     .product-count {
-      display: flex;
-      flex-direction: row;
+      display:grid;
+      grid-template-columns: repeat(3, 1.4em);
+      grid-template-rows: 1fr;
+      gap: 0;
+      border-left: solid 1px var(--secondary-color);
     }
-  
+    input{
+      grid-column-start: 2;
+    }
+    
     .count-textbox {
       color: #000;
       font-size: 16px;
       line-height: normal;
       width: 25px;
       height: 38px;
-      border: solid 0.5px;
+      border: solid 1px;
       text-align: center;
       align-self: center;
       background-color: var(--primary-color);
     }
-  
+    
     .plus-button {
+      grid-column-start: 3;
+      grid-row-start: 1;
       width: 10px;
-      height: 22px;
+      height: 20px;
     }
-  
+    
     .minus-button {
+      grid-column-start: 1;
+      grid-row-start: 1;
       border: none;
+      height: 24px;
+      border-left: solid 1px var(--secondary-color);
+      border-right:none;
     }
     .minus-button,
     .plus-button {
-      border-top: solid 0.5px;
-      border-bottom: solid 0.5px;
-      border-right: none;
+      border-top: solid 1px;
+      border-bottom: solid 1px;
       border-left: none;
       font-size: 14px;
       font-weight: 700;
       color: #000;
       cursor: pointer;
-      width: 27px;
+      width: 24px;
+      height: 42px;
       background-color: var(--primary-color);
     }
   

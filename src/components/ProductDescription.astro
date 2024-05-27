@@ -1,14 +1,15 @@
 ---
-
+const {data} = Astro.props;
+console.log(data);
 ---
-
 <script>
+  let descriptionRow = document.querySelector("#descriptionRow");
   let showDescriptionBtn = document.querySelector("#showDescription");
   let showSpecificationsBtn = document.querySelector("#showSpecificationsBtn");
   let descriptionContent = document.querySelector("#descriptionContent");
   let specificationContent = document.querySelector("#specificationContent");
 
-  showDescriptionBtn.addEventListener("click", () => {
+  descriptionRow.addEventListener("click", () => {
     descriptionContent.classList.toggle("hide");
     descriptionContent.classList.toggle("show");
     showDescriptionBtn.classList.toggle("collapse");
@@ -22,17 +23,14 @@
 </script>
 
 <article>
-  <h2>ProductName</h2>
-  <img src="#" alt="Add Image here" />
+  <h2>{data.title}</h2>
+  <img src={data.image} alt="Add Image here" />
   <h3>200,00 DKK</h3>
   <div>
-    <section class="descriptionBox">
+    <section id="descriptionRow" class="descriptionBox">
       <h3>Beskrivelse</h3>
       <p id="descriptionContent" class="hide">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam aut
-        modi, veniam maiores maxime sit repudiandae amet tenetur voluptatum id
-        eum quis reprehenderit? Corrupti fugit dicta animi, soluta aperiam
-        ipsum!
+        {data.description}
       </p>
       <button id="showDescription" class="DescBtn">
         <span></span>
@@ -71,6 +69,9 @@
 </article>
 
 <style>
+  img{
+    width: 100vw;
+  }
   article {
     display: grid;
     grid-template-columns: 1fr;

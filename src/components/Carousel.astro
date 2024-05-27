@@ -97,16 +97,15 @@ const data = await fetch(
       <button id="prev-slide" class="slide-button material-symbols-rounded">
       </button>
       <ul class="image-list">
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
-        <img class="image-item" src="#" alt="" />
+        <section class="image-item">
+          {
+            data.map((data) => {
+              return <Card data={data} />;
+            })
+            }
+
+
+        </section>
           {
             data.map((data) => {
               return <Card data={data} />;
@@ -170,10 +169,7 @@ const data = await fetch(
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 18px;
-<<<<<<< Updated upstream
     font-size: 0;
-=======
->>>>>>> Stashed changes
     list-style: none;
     margin-bottom: 30px;
     overflow-x: auto;
@@ -183,6 +179,9 @@ const data = await fetch(
     display: none;
   }
   .slider-wrapper .image-list .image-item {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
     width: 325px;
     height: 400px;
     object-fit: cover;

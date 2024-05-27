@@ -1,6 +1,5 @@
-<section class="overskrift">
-  <div class="tekst">
-    <div class="container"></div>
+<section class="container">
+  <div class="baggrund">
     <h1 id="om_os">Om os</h1>
   </div>
   <img src="/images/about-top-720x640.webp" alt="" />
@@ -8,33 +7,30 @@
 
 <style>
   @media only screen and (min-width: 768px) {
-    .overskrift {
+    .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      margin: 0;
       justify-items: stretch;
     }
 
     #om_os {
+      margin-right: 100px;
       font-family: var(--font-family-primary);
       font-size: var(--font-size-xl);
-      grid-column: 2;
-      grid-row: 2;
       color: var(--primary-color);
     }
 
-    .container {
-      width: 100%;
-      height: auto;
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 2;
-      background-color: var(--secondary-accent);
+    img {
+      grid-column: 2;
     }
 
-    .tekst {
+    .baggrund {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      justify-items: center;
+      align-items: center;
+      justify-items: end;
+      grid-column: 1/2;
+      background-color: var(--secondary-accent);
     }
   }
 
@@ -44,31 +40,21 @@
   }
 
   @media only screen and (max-width: 768px) {
-    .overskrift {
-      margin-bottom: 60px;
+    .baggrund {
       display: block;
-    }
-
-    .container {
-      display: inline-block;
-      width: 100%;
-      padding: 100px 0 100px 0;
+      text-align: center;
+      padding: 10px;
       background-color: var(--secondary-accent);
-      grid-area: 1/1;
+    }
+    .container {
+      display: block;
+      width: 100%;
+      background-color: var(--secondary-accent);
     }
     #om_os {
       font-family: var(--font-family-primary);
       font-size: var(--font-size-xl);
       color: var(--primary-color);
-      grid-area: 1/1;
-    }
-
-    .tekst {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      justify-items: center;
-      align-items: center;
     }
   }
 </style>

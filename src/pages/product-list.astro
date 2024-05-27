@@ -3,11 +3,12 @@ import Productlist from "../components/Productlist.astro";
 
 import Sidenavigation from "../components/Sidenavigation.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-
+import Productlist from "../components/Productlist.astro";
 import "../styles/styles.css";
+import Card from "../components/Card.astro";
 
 const data = await fetch(
-  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?select=*,item:items(*,subcategory:subcategories(*,category:categories(*)))",
   {
     method: "GET",
     headers: {

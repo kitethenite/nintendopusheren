@@ -1,118 +1,223 @@
 ---
-
+import MarioFooter from "./MarioFooter.astro";
 ---
 
+<div class="animation" style="margin: 0; padding: 0; width: 100%;">
+  <MarioFooter />
+</div>
 <footer>
-  <section class="section1">
+  <nav class="generalInformation">
     <a href="#">Gavekort</a>
     <a href="#">Levering</a>
     <a href="#">FAQ</a>
     <a href="#">Handelsbetingelser</a>
-  </section>
-  <section class="section2">
-    <h2>Kontakt</h2>
-    <p>Ydungsgade 4-6, kælderen 2200 Kbh N</p>
-    <h2>Email:</h2>
-    <p>kontakt@nintendopusheren.dk</p>
-    <h2>Telefon:</h2>
-    <p>60 57 12 82</p>
-  </section>
-  <section class="section3">
-    <div>
-      <h2>Åbningstider</h2>
-      <div class="OpeningHours">
-        <div>
-          <p>Man-Fre</p>
-          <p>Lørdag</p>
-          <p>Søndag</p>
-        </div>
-        <div class="Hours">
-          <p>12:00 - 17:30</p>
-          <p>11:00 - 16:00</p>
-          <p>12:00 - 15:00</p>
-          <p>Kun første søndag hver måned</p>
-        </div>
+  </nav>
+  <div class="openingsContainer">
+    <h3>Åbingstider</h3>
+    <div class="openingsInformation">
+      <div class="openingDays">
+        <p>Man-Fre</p>
+        <p>Lør</p>
+        <p>Søn</p>
+      </div>
+      <div class="openingHours">
+        <p>12:00 - 17:30</p>
+        <p>11:00 - 16:00</p>
+        <p>12:00 - 15:00</p>
+        <p>Kun første søndag hver måned</p>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="contactInformation">
+    <h3>Adresse</h3>
+    <a
+      href="https://www.google.com/maps/place/Nintendopusheren/@55.6988114,12.5527197,20.13z/data=!4m15!1m8!3m7!1s0x46525253978fc633:0xe7727efe94e8e6d0!2sYdunsgade+4,+2200+K%C3%B8benhavn!3b1!8m2!3d55.6987579!4d12.5529088!16s%2Fg%2F11csg3sljr!3m5!1s0x465253b629f7fff1:0xeb40e44e281b3414!8m2!3d55.6987864!4d12.5529558!16s%2Fg%2F11hz9rh0s5?entry=ttu"
+      target="_blank">Ydungsgade 4-6, kælderen 2200 Kbh N</a
+    >
+    <h3>Email</h3>
+    <a href="mailto:“kontakt@nintendopusheren.dk”"
+      >kontakt@nintendopusheren.dk</a
+    >
+    <h3>Telefon</h3>
+    <a href="tel:60571282">60 57 12 82</a>
+  </div>
+  <nav class="socialMedia">
+    <a href="#">
+      <img src="../../public/assets/instagram.svg" alt="Instagram" />
+    </a>
+    <a href="#">
+      <img src="../../public/assets/facebook.svg" alt="Facebook" />
+    </a>
+    <a href="#">
+      <img src="../../public/assets/youtube.svg" alt="YouTube" />
+    </a>
+  </nav>
 </footer>
 
 <style>
-  @media (min-width: 1440px) {
+  /*MOBILESITE*/
+  @media (max-width: 1440px) {
+    * {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
     footer {
-      background-color: #3c4e5a;
-      padding: 5em 0 2em 0;
-      display: flex;
-      justify-content: space-around;
-    }
-    a{
       display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      background-color: #3c4e5a;
       color: var(--primary-color);
-      text-decoration: none;
-      padding: 8%;
-    }
-    .section1 {
-      padding-top: 3em;
-    }
-    .section2 p {
-      text-decoration: underline;
-    }
-    .section3 {
-      display: flex;
-      align-items: baseline;
-    }
-    .OpeningHours {
-      display: flex;
-    }
-    .Hours {
-      text-align: right;
+      padding: 5%;
     }
 
-    p {
-      color: var(--primary-color);
+    .generalInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1em;
     }
-    h2 {
+    a {
+      text-decoration: none;
       color: var(--primary-color);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-light);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    p {
+      font-size: var(--font-size-xs);
+    }
+    h3 {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-regular);
+      padding: 0.5em 0 0.5em 0;
+    }
+    .openingsInformation {
+      display: grid;
+      grid-template-columns: 5em 6em;
+      align-items: baseline;
+    }
+    .openingsContainer .openingDays {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .openingsContainer .openingHours {
+      display: flex;
+      grid-column-start: 2;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .contactInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .socialMedia {
+      display: flex;
+      align-items: last baseline;
+      gap: 0.5em;
+    }
+    img {
+      width: 50px;
+      transition: 300ms;
+      scale: 1;
+    }
+    img:hover {
+      transition: 300ms;
+      scale: 1.2;
     }
   }
 
-  @media (max-width: 1440px) {
+  /*DESKTOPSITE*/
+  @media (min-width: 834px) {
+    * {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
     footer {
-      padding: 0 72px 0 72px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: first baseline;
-      background-color: var(--secondary-accent);
-    }
-    a{
-      display:flex;
-      flex-direction: column;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 8vh;
+      column-gap: 20%;
+      row-gap: 16%;
+      background-color: #3c4e5a;
       color: var(--primary-color);
+      padding: 6% 12% 6% 12%;
+    }
+    .generalInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    a {
       text-decoration: none;
-      padding: 0.5rem;
+      color: var(--primary-color);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-light);
+      line-height: 150%;
     }
-    .section1 {
-      padding-top: 3em;
-    }
-    .section2 p {
+    a:hover {
       text-decoration: underline;
     }
-    .section3 {
-      grid-column: 2;
-      grid-row: 1;
-    }
-    .OpeningHours {
-      display: flex;
-    }
-    .Hours {
-      text-align: right;
-    }
-
     p {
-      color: var(--primary-color);
+      font-size: var(--font-size-xs);
+      line-height: 150%;
     }
-    h2 {
-      color: var(--primary-color);
+    h3 {
+      font-size: var(--font-size-md);
+      font-family: var(--font-family-secondary);
+      font-weight: var(--font-weight-regular);
+      padding: 0.5em 0 0.5em 0;
+    }
+    .openingsInformation {
+      display: grid;
+      grid-template-columns: 6em 8em;
+      align-items: baseline;
+    }
+    .openingsContainer .openingDays {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .openingsContainer .openingHours {
+      display: flex;
+      grid-column-start: 2;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .contactInformation h3 {
+      padding: 0.5em 0 0.5em 0;
+    }
+    .contactInformation {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      grid-area: 2/3/1/2;
+    }
+    .socialMedia {
+      display: flex;
+      align-items: last baseline;
+      gap: 0.5em;
+      grid-area: 2/3/2/2;
+      place-self: center;
+    }
+    img {
+      width: 4.5vw;
+      transition: 300ms;
+      scale: 1;
+    }
+    img:hover {
+      transition: 300ms;
+      scale: 1.2;
     }
   }
 </style>

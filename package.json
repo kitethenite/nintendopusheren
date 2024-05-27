@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.8.3"
+    "@astrojs/react": "^3.4.0",
+    "astro": "^4.8.3",
+    "lottie-react": "^2.4.0"
   }
 }
