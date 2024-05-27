@@ -2,19 +2,23 @@
 import HeroimageIndex from "../components/HeroimageIndex.astro";
 import LuigiMansion2 from "../components/LuigiMansion2.astro";
 import PaperMario from "../components/PaperMario.astro";
-import "../styles/styles.css"
+import "../styles/styles.css";
 import Footer from "../components/Footer.astro";
-import ProductDescription from "../components/ProductDescription.astro"
+import ProductDescription from "../components/ProductDescription.astro";
 import Carousel from "../components/Carousel.astro";
 import Card from "../components/Card.astro";
+import MarioFooter from "../components/MarioFooter.astro";
 
-const products = await fetch("https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products", {
-	method:"GET",
-	headers: {
-		apikey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
-
-	},
-}).then(res=>res.json());
+const products = await fetch(
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
+    },
+  }
+).then((res) => res.json());
 
 console.log(products);
 ---
@@ -44,7 +48,7 @@ console.log(products);
       <h1>Nyheder</h1>
       <LuigiMansion2 />
       <PaperMario />
-      <Footer/>
+      <Footer />
     </main>
   </body>
 </html>
