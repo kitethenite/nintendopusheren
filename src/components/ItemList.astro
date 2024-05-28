@@ -2,9 +2,6 @@
 const { product } = Astro.props;
 
 ---
-
-<!-- <a href={`/${product.slug}`}> -->
-  <!-- <a href={`${product.slug}/${product.item_slug}/${product.slug}`}></a> -->
   <article class="productlist">
     <img src={product.image} alt={product.title} />
     <h3>{product.title}</h3>
