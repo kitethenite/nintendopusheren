@@ -1,5 +1,5 @@
 import { useLottie } from "lottie-react";
-import Footer from "../../public/animations/Footer.json";
+import Footer from "/src/animations/Footer.json";
 
 const MarioFooter = () => {
   const options = {
