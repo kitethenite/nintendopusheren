@@ -1,36 +1,66 @@
 ---
 import GemProdukt from "./GemProdukt.astro";
 const { product } = Astro.props;
+
+function stockStatus(product) {
+  if (!product.in_stock || product.stock_quantity === 0) {
+    return "Ikke på lager";
+  } else if (product.stock_quantity === 1) {
+    return "Kun en tilbage på lager";
+  } else {
+    return "På lager";
+  }
+}
+
+const getStockStatus = stockStatus(product);
+
 ---
+
 
 <article class="card">
   <div class="img-container">
     <img src={product.image} alt="text" />
     <div class="gem-container">
       <div class="gem">
-        <GemProdukt/>
-      
+        <GemProdukt />
+      </div>
     </div>
   </div>
   <div class="text-container">
     <h3>{product.title}</h3>
-    <div class="origin">{product.country_origin}</div>
+    <div class="origin">
+      <img src="/assets/planet.svg" alt="origin" /><p>
+        {product.country_origin}
+      </p>
+    </div>
     <div class="price">{product.price},00 DKK</div>
-    <div class="stock">{product.in_stock}</div>
+    <div class="stock"><p>{getStockStatus}</p></div>
     <div class="buy">Tilføj kurv</div>
   </div>
 </article>
 
+
+<script src="../js/js"></script>
+
 <style>
   .card {
     width: 100%;
-    max-width: 320px;
-    min-width: 172px;
+    max-width: 340px;
+    margin: auto;
     height: 100%;
-    aspect-ratio: 2/1;
-    border: black solid 1px;
+    /* border: black solid 1px; */
+    border-bottom: var(--secondary-color) 1px solid;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: 2;
   }
 
+  .card:hover {
+    border: var(--secondary-color) solid 1px;
+    transform: scale(1.02);
+    transition: 200ms;
+  }
   .img-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -47,40 +77,66 @@ const { product } = Astro.props;
   .gem-container {
     grid-column: 2/-1;
     grid-row: 1;
-
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-
   }
 
-  .gem{
-grid-row: 3;
-justify-content: end;
-grid-column: 2;
-
+  .gem {
+    grid-row: 1;
+    justify-content: end;
+    grid-column: 2;
+    padding: 1vw;
   }
- 
+
   .text-container {
     padding: 1rem 1.5rem;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
   h3 {
     grid-column: 1/-1;
-    padding: 1rem 0 4rem;
   }
 
   .origin,
   .price {
-    padding: 0 0 2rem;
+    padding: 2rem 0;
+  }
+
+  .origin {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .origin img {
+    width: 2rem;
+  }
+
+  .price {
+    text-align: right;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-self: end;
   }
 
   .buy {
-    background-color: var(--secondary-accent);
-    padding: 1em;
-    width: fit-content;
+    background-color: var(--accent-color);
     color: var(--primary-color);
+    padding: 1rem;
+    justify-self: end;
+    transition: 300ms;
+    height: 3rem;
+  }
+
+  .buy:hover {
+    background-color: var(--secondary-accent);
+    transition: 300ms;
+  }
+
+  .out-of-stock {
+    display: none;
   }
 </style>

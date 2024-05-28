@@ -9,7 +9,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 export async function getStaticPaths() {
   //fetching subcategory data
   const data = await fetch(
-    `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories`,
+    `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories?order=id.asc`,
     {
       method: "GET",
       headers: {
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 const { subName } = Astro.props;
 
 const items = await fetch(
-  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items`,
+  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items?order=id.asc`,
   {
     method: "GET",
     headers: {
@@ -43,7 +43,7 @@ const items = await fetch(
 <MainLayout>
   <div class="header-info">
     <h1>{subName.name}</h1>
-    <p></p>
+    <p>{subName.about}</p>
   </div>
 
   <section class="items">
@@ -66,8 +66,16 @@ const items = await fetch(
 
 <style>
   h1,
+  p,
   section {
     text-align: center;
+    max-width: 1040px;
+    margin: auto;
+  }
+
+  .header-info {
+    max-width: 44rem;
+    margin: auto;
   }
   section {
     display: grid;
@@ -79,23 +87,19 @@ const items = await fetch(
     margin: auto;
   }
 
-  .items-link a{
+  .items-link a {
     text-decoration: none;
-    color: var( --secondary-color);
+    color: var(--secondary-color);
     transition: 0.3s;
-
   }
 
-  .items-link:hover a:hover{
-    color: var( --accent-color);
+  .items-link:hover a:hover {
+    color: var(--accent-color);
     transition: 0.2s;
-
   }
 
-  .items-link:hover{
+  .items-link:hover {
     transform: scale(1.1);
     transition: 0.3s;
-
-
   }
 </style>

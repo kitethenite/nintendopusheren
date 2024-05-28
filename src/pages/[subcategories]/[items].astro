@@ -10,7 +10,7 @@ import MainLayout from "../../layouts/MainLayout.astro";
 export async function getStaticPaths() {
   // fetching datan som ska ge produkt-URLn
   const items = await fetch(
-    "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items",
+    "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items?order=id.asc",
     {
       method: "GET",
       headers: {
@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 
 const products = await fetch(
-  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products`,
+  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?order=id.asc`,
   {
     method: "GET",
     headers: {
@@ -75,14 +75,14 @@ const products = await fetch(
   }
 
   .products {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2em;
     width: 100%;
     max-width: 1040px;
-    margin: auto;
-    justify-content: center;
 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+
+    margin: auto;
     padding: 5rem 0;
   }
 
