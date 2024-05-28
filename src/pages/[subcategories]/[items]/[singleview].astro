@@ -1,7 +1,6 @@
 ---
 // src/pages/[subcategories]/[items]/[singleview].astro
 
-
 import Carousel from "../../../components/Carousel.astro";
 import AntalProdukt from "../../../components/AntalProdukt.astro";
 import GemProdukt from "../../../components/GemProdukt.astro";
@@ -22,7 +21,6 @@ export async function getStaticPaths() {
     }
   ).then((response) => response.json());
 
-  // minsingleview: product.slug,
   return products.map((product) => ({
     params: {
       subcategories: product.subcategory_name,
@@ -33,7 +31,6 @@ export async function getStaticPaths() {
   }));
 }
 const { product } = Astro.props;
-
 
 ---
 
