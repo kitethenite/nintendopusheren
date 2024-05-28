@@ -20,12 +20,13 @@ export async function getStaticPaths() {
   ).then((response) => response.json());
 
   return items.map((item) => ({
-      params: {
-        subcategories: item.subcategory_name,
-        items: item.slug },
-      props: { item },
-    }));
-  }
+    params: {
+      subcategories: item.subcategory_name,
+      items: item.slug,
+    },
+    props: { item },
+  }));
+}
 
 const { item } = Astro.props;
 
@@ -41,7 +42,6 @@ const products = await fetch(
 ).then((res) => res.json());
 
 // console.log(products);
-
 ---
 
 <MainLayout headliner="This is the product list">
@@ -53,9 +53,8 @@ const products = await fetch(
         .filter((product) => product.item_id === item.id)
         .map((product) => {
           return (
-          // <a href={`${item.slug}/${product.slug}`}>
-
-            <a href={`${item.slug}`}>
+            // <a href={`${item.slug}/${product.slug}`}>
+            <a href={`/${product.slug}`}>
               <ItemList product={product} />
             </a>
           );
