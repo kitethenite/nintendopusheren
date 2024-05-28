@@ -7,6 +7,7 @@ import SubItem from "../components/SubItem.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 export async function getStaticPaths() {
+  //fetching subcategory data
   const data = await fetch(
     `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories`,
     {
