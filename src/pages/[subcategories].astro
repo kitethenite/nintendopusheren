@@ -8,7 +8,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 export async function getStaticPaths() {
   const data = await fetch(
-    "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories",
+    `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/subcategories`,
     {
       method: "GET",
       headers: {
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const { subName } = Astro.props;
 
 const items = await fetch(
-  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items",
+  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items`,
   {
     method: "GET",
     headers: {
@@ -58,3 +58,18 @@ const items = await fetch(
     }
   </section>
 </MainLayout>
+
+
+<!-- <MainLayout>
+  <h1>{subName.name}</h1>
+  <section class="items">
+    {items.map((item) => (
+      <div>
+        <a href={`/${subName.slug}/${item.slug}`}>
+          <SubItem item={item} />
+          {item.name}
+        </a>
+      </div>
+    ))}
+  </section>
+</MainLayout> -->

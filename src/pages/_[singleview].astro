@@ -1,7 +1,7 @@
 ---
 // src/pages/[subcategories]/[items]/[singleview].astro
 
-import MainLayout from "../../../layouts/MainLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 export async function getStaticPaths() {
   const products = await fetch(
@@ -17,8 +17,8 @@ export async function getStaticPaths() {
 
   return products.map((product) => ({
     params: {
-      subcategories: product.subcategory_slug,
-      items: product.item_slug,
+      subcategories: product.slug,
+      items: product.slug,
       singleview: product.slug,
     },
     props: { product },

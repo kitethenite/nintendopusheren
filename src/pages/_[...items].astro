@@ -3,8 +3,8 @@
 
 // build a product list for the selected items, with a dynamic path
 
-import ItemList from "../../components/ItemList.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
+import ItemList from "../components/ItemList.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 export async function getStaticPaths() {
   // fetching datan som ska ge produkt-URLn
@@ -22,8 +22,8 @@ export async function getStaticPaths() {
   return items.map((item) => {
     return {
       params: {
-        subcategories: item.subcategory_name,
-        items: item.slug,
+        subcategories: item.slug,
+        items: item.slug
       },
       props: { item },
     };
@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 
 const products = await fetch(
-  `https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products`,
+`https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?item_id=eq.${item.id}`,
   {
     method: "GET",
     headers: {
@@ -42,26 +42,33 @@ const products = await fetch(
   }
 ).then((res) => res.json());
 
-console.log(products);
-return products;
+// console.log(item)
 ---
 
 <MainLayout headliner="This is the product list">
-  <h1>{item.name}</h1>
+  <!-- <h1>{item.name}</h1>
 
-  <!-- <section class="products">
+  <section class="products">
     {
       products
         .filter((product) => product.item_id === item.id)
         .map((product) => {
           return (
             <a href={`${item.subcategory_name}/${item.slug}/${product.slug}`}>
-              <ItemList product={product} />
+              <ItemList product={product}/>
             </a>
           );
         })
     }
   </section> -->
+
+
+  <h1>{item.name}</h1>
+  <section class="products">
+    {products.map((product) => (
+      <ItemList product={product} />
+    ))}
+  </section>
 </MainLayout>
 
 <style></style>
