@@ -1,39 +1,72 @@
 ---
+import GemProdukt from "./GemProdukt.astro";
 const { product } = Astro.props;
-
 ---
-  <article class="productlist">
-    <img src={product.image} alt={product.title} />
+
+<article class="productlist">
+  <div class="img-container">
+    <img src={product.image} alt="text" />
+    <GemProdukt class="gem" />
+  </div>
+  <div class="text-container">
     <h3>{product.title}</h3>
-    <div class="price">{product.price} DKK</div>
+    <div class="origin">{product.country_origin}</div>
+    <div class="price">{product.price},00 DKK</div>
     <div class="stock">{product.in_stock}</div>
     <div class="buy">Tilføj kurv</div>
-  </article>
-</a>
+  </div>
+</article>
 
 <style>
   .productlist {
     width: 100%;
     max-width: 320px;
-    /* border: solid 1px; */
-    height: 100%;
-    max-height: 480px;
+    min-width: 172px;
+    aspect-ratio: 2/1;
+    border: black solid 1px;
+
+  }
+
+  .img-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   img {
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     object-fit: cover;
+    grid-column: 1/-1;
+    grid-row: 1;
   }
 
-  a {
-    text-decoration: none;
-    background-color: red;
+  .gem {
+    grid-column: 2/-1;
+    grid-row: 1;
+  }
+
+
+  .text-container {
+    padding: 1rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h3 {
+    grid-column: 1/-1;
+    padding: 1rem 0 4rem;
+  }
+
+  .origin,
+  .price {
+    padding: 0 0 2rem;
   }
 
   .buy {
-    background-color: rgb(255, 253, 251);
+    background-color: var(--secondary-accent);
     padding: 1em;
     width: fit-content;
+    color: var(--primary-color);
   }
 </style>
+

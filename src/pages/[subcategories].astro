@@ -20,8 +20,8 @@ export async function getStaticPaths() {
   ).then((res) => res.json());
 
   return data.map((subName) => ({
-    params: { subcategories: subName.slug }, 
-    props: { subName }, 
+    params: { subcategories: subName.slug },
+    props: { subName },
   }));
 }
 const { subName } = Astro.props;
@@ -41,18 +41,21 @@ const items = await fetch(
 ---
 
 <MainLayout>
-  <h1>{subName.name}</h1>
+  <div class="header-info">
+    <h1>{subName.name}</h1>
+    <p></p>
+  </div>
+
   <section class="items">
     {
       items
         .filter((item) => item.subcategory_id === subName.id)
         .map((item) => {
           return (
-            <div>
-              
+            <div class="items-link">
               <a href={`/${subName.slug}/${item.slug}`}>
-                <SubItem item={item}/>
-                {item.name}
+                <SubItem item={item} />
+                <p>til {item.subcategory_text}</p>
               </a>
             </div>
           );
@@ -61,17 +64,38 @@ const items = await fetch(
   </section>
 </MainLayout>
 
+<style>
+  h1,
+  section {
+    text-align: center;
+  }
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    padding: 5rem 0;
+    width: 100%;
+    max-width: 1040px;
+    margin: auto;
+  }
 
-<!-- <MainLayout>
-  <h1>{subName.name}</h1>
-  <section class="items">
-    {items.map((item) => (
-      <div>
-        <a href={`/${subName.slug}/${item.slug}`}>
-          <SubItem item={item} />
-          {item.name}
-        </a>
-      </div>
-    ))}
-  </section>
-</MainLayout> -->
+  .items-link a{
+    text-decoration: none;
+    color: var( --secondary-color);
+    transition: 0.3s;
+
+  }
+
+  .items-link:hover a:hover{
+    color: var( --accent-color);
+    transition: 0.2s;
+
+  }
+
+  .items-link:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+
+
+  }
+</style>
