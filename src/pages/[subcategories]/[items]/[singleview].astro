@@ -38,11 +38,11 @@ const { product } = Astro.props;
   <div class="templateForEachProduct">
     <div class="soldOutContainer">
       <p class="hide" id="soldOut">UDSOLGT</p>
-      <img src="/images/TestImg.png" alt="" />
+      <img src={product.image} alt="" />
     </div>
     <div class="titleAndPrice">
-      <h1>PRODUKT OVERSKRIFT</h1>
-      <p class="productPrice">PRIS,00 DKK</p>
+      <h1>{product.title}</h1>
+      <p class="productPrice">{product.price} DKK</p>
       <div id="customerInteractionContainer" class="">
         <AntalProdukt />
         <PurchaseButton tekst="Tilføj til kurv" />
@@ -55,10 +55,7 @@ const { product } = Astro.props;
         <section id="descriptionRow" class="descriptionBox">
           <h2>Beskrivelse</h2>
           <p id="descriptionContent" class="hide">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. A ea ipsam
-            minima excepturi et veniam, ut animi labore possimus recusandae
-            pariatur non asperiores, unde officiis deleniti aliquam! Asperiores,
-            blanditiis eveniet!
+            {product.description}
           </p>
           <button id="showDescription" class="DescBtn">
             <span></span>
