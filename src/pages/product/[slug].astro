@@ -1,11 +1,11 @@
 ---
 import "../styles/styles.css";
-import MainLayout from "../layouts/MainLayout.astro";
-import Carousel from "../components/Carousel.astro";
-import AntalProdukt from "../components/AntalProdukt.astro";
-import GemProdukt from "../components/GemProdukt.astro";
-import Waitlist from "../components/Waitlist.astro";
-import PurchaseButton from "../components/PurchaseButton.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Carousel from "../../components/Carousel.astro";
+import AntalProdukt from "../../components/AntalProdukt.astro";
+import GemProdukt from "../../components/GemProdukt.astro";
+import Waitlist from "../../components/Waitlist.astro";
+import PurchaseButton from "../../components/PurchaseButton.astro";
 
 const data = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
