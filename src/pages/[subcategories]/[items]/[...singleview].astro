@@ -1,5 +1,4 @@
 ---
-// src/pages/[subcategories]/[items]/[singleview].astro
 
 import Carousel from "../../../components/Carousel.astro";
 import AntalProdukt from "../../../components/AntalProdukt.astro";
@@ -331,4 +330,12 @@ const { product } = Astro.props;
     specificationContent.classList.toggle("show");
     showSpecificationsBtn.classList.toggle("collapse");
   });
+
+  function showProduct(product){
+    console.log(product);
+    if(product.soldout){
+          document.querySelector(".soldOut").classList.remove("hide");
+          document.querySelector("#notificationContainer").classList.remove("hide");
+      }
+}
 </script>
