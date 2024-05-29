@@ -10,6 +10,8 @@ const data = await fetch(
     },
   }
 ).then((res) => res.json());
+
+const { currentSub, currentItem } = Astro.props;
 // console.log(data)
 ---
 
@@ -101,7 +103,7 @@ const data = await fetch(
         <section class="image-item">
           {
             data.map((data) => {
-              return <Card data={data} />;
+              return <Card data={data} currentSub={currentSub} currentItem={currentItem}/>;
             })
           }
         </section>

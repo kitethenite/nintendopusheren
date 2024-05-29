@@ -31,6 +31,10 @@ export async function getStaticPaths() {
 }
 const { product } = Astro.props;
 
+const currentSub = product.subcategory_name
+const currentItem = product.item_name
+
+
 ---
 
 <MainLayout headliner="product view">
@@ -92,7 +96,7 @@ const { product } = Astro.props;
       </div>
     </div>
   </div>
-  <Carousel />
+  <Carousel currentSub={currentSub} currentItem={currentItem}/>
 </MainLayout>
 
 <style>

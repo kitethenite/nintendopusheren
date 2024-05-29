@@ -26,7 +26,7 @@ const data = await fetch(
     </ul>
     <div class="userarea">
       <a href="">
-        <img src="/assets/search.svg" alt="search button" />
+        <img src="/assets/search.svg" alt="search button" class="search" />
       </a>
       <a href="">
         <img src="/assets/profile.svg" alt="profile button" />
@@ -80,8 +80,6 @@ const data = await fetch(
   a:hover {
     text-decoration: underline;
     color: var(--accent-color);
-
-
   }
 
   a:active {
@@ -107,4 +105,43 @@ const data = await fetch(
     grid-template-columns: repeat(6, 1fr);
     gap: 2em;
   }
+
+  /* @media (max-width: 1000px) {
+    .top {
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+
+    .topnav {
+      grid-row: 2;
+      grid-column: 1/-1;
+    }
+
+    .userarea {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: end;
+    align-items: center;
+    height: 24px;
+  }
+
+  .search {
+    grid-row: 2;
+    grid-column: 1/2;
+    justify-items: start;
+
+  }
+
+    .storenav {
+      grid-row: 1;
+      align-self: start;
+
+
+      /* grid-row: 2; */
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  } */
 </style>
