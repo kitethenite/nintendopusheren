@@ -53,7 +53,7 @@ const products = await fetch(
   <section class="products">
     {
       products
-        .filter((product) => product.item_id === item.id)
+        .filter((product) => product.item_id === item.id && product.in_stock)
         .map((product) => {
           return (
             <a href={`/${item.subcategory_name}/${item.slug}/${product.slug}`}>
