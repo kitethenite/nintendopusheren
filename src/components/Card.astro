@@ -1,9 +1,9 @@
 ---
-const { data } = Astro.props;
+const { data, currentSub, currentItem} = Astro.props;
 console.log(data);
 ---
 
-<a href={data.slug}>
+<a href={`/${currentSub}/${currentItem}/${data.slug}`}>
   <article class="card">
     <div class="image-container">
       <img src={data.image} alt="Not Showing" />
