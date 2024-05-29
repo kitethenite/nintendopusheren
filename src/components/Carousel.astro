@@ -1,7 +1,7 @@
 ---
 import Card from "./Card.astro";
 const data = await fetch(
-"https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
+  "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/products?limit=10",
   {
     method: "GET",
     headers: {
@@ -92,7 +92,10 @@ const data = await fetch(
 <section class="slider_container">
   <div class="container">
     <div class="slider-wrapper">
-      <button id="prev-slide" class="slide-button material-symbols-rounded">
+      <button
+        id="prev-slide"
+        class="slide-button material-symbols-rounded"
+      >
       </button>
       <ul class="image-list">
         <section class="image-item">
@@ -100,12 +103,13 @@ const data = await fetch(
             data.map((data) => {
               return <Card data={data} />;
             })
-            }
-
-
+          }
         </section>
       </ul>
-      <button id="next-slide" class="slide-button material-symbols-rounded">
+      <button
+        id="next-slide"
+        class="slide-button material-symbols-rounded"
+      >
       </button>
     </div>
     <div class="slider-scrollbar">
@@ -117,10 +121,25 @@ const data = await fetch(
 </section>
 
 <style>
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
   .slider_container {
     margin: 2vw 0 2vw 0;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     min-height: 50vh;
     border-top: 2px solid var(--accent-color);
@@ -144,11 +163,13 @@ const data = await fetch(
     display: flex;
     cursor: pointer;
     font-size: 2.2rem;
-    background: var(--primary-color);
-    border: 1px solid  #404040;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: 2px solid #404040;
     align-items: center;
     justify-content: center;
     transform: translateY(-50%);
+    
   }
 
   .slider-wrapper .slide-button#prev-slide {
@@ -160,9 +181,8 @@ const data = await fetch(
   }
   .slider-wrapper .image-list {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 18px;
-    font-size: 0;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 58px;
     list-style: none;
     margin-bottom: 30px;
     overflow-x: auto;
