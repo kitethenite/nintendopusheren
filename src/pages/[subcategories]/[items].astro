@@ -7,25 +7,25 @@ import ItemList from "../../components/ItemList.astro";
 import Sidenavigation from "../../components/Sidenavigation.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 
-export async function getStaticPaths() {
-  // fetching datan som ska ge produkt-URLn
-  const items = await fetch(
+export async function getStaticPaths() { //Funktionen bruges til at genere vores dynamiske rute.
+  // fetching datan som ska ge produkt-URLn. Her manipuleres vores parameter så den fetcher efter den specifikke item vi går efter.
+  const items = await fetch( //Forespørgsel efter API : vi spørg om vi må for lov til at hente data.
     "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/items?order=id.asc",
     {
       method: "GET",
       headers: {
-        apikey:
+        apikey: //apikey godkender anmodningen
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRocnlod2Nydmx6bG51dWN4aHFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMTIxNzUsImV4cCI6MjAzMTc4ODE3NX0.qe83qKHMa9-0Tc3HFWEqgvYa_LKMiI267dutJ7DxWs0",
       },
     }
   ).then((response) => response.json());
-
-  return items.map((item) => ({
-    params: {
+//returnere indholdet 
+  return items.map((item) => ({ // liste (array) af objekter. Map metoden iterere over hvert element i listen vi fetcher. For hver item udførere funktionen inde i map. og returnere et nyt objekt.
+    params: { //Dette er et objekt, der indeholder indholdet vi gerne vil vise på sitet.
       subcategories: item.subcategory_name,
       items: item.slug,
     },
-    props: { item },
+    props: { item }, //Objeket der indholder hele item
   }));
 }
 
@@ -42,7 +42,6 @@ const products = await fetch(
   }
 ).then((res) => res.json());
 
-// console.log(products);
 ---
 
 <MainLayout headliner=`${item.name} til ${item.subcategory_text}`>
