@@ -331,11 +331,4 @@ const { product } = Astro.props;
     showSpecificationsBtn.classList.toggle("collapse");
   });
 
-  function showProduct(product){
-    console.log(product);
-    if(product.soldout){
-          document.querySelector(".soldOut").classList.remove("hide");
-          document.querySelector("#notificationContainer").classList.remove("hide");
-      }
-}
 </script>
