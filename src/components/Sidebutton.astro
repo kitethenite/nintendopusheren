@@ -14,7 +14,6 @@ const { tal } = Astro.props;
     border: var(--secondary-accent);
     border-style: solid;
     box-shadow: 6px 6px var(--secondary-accent);
-
   }
   a {
     text-decoration: none;
@@ -23,6 +22,15 @@ const { tal } = Astro.props;
     color: var(--secondary-accent);
     font-weight: var(--font-weight-regular);
     display: block; /* added block to make the entire button click-able <3 */
-
   }
+
+  button:hover {
+    background-color: #ffb3a2;
+  }
+
+  button:active {
+    background-color: var(--accent-color);
+  }
+
+
 </style>
