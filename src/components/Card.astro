@@ -4,14 +4,14 @@ console.log(data);
 ---
 
 <a href={`/${currentSub}/${currentItem}/${data.slug}`}>
-  <article class="card">
+  <section class="card">
     <div class="image-container">
       <img src={data.image} alt="Not Showing" />
     </div>
     <h3>{data.title}</h3>
-    <p>{data.price},00 DKK</p>
+    <p>{data.price} DKK</p>
     <div class="priceContainer"></div>
-  </article>
+  </section>
 </a>
 
 <style>
