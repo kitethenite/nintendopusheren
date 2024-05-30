@@ -33,9 +33,17 @@ const data = await fetch(
       <li><a href="/about">Om os</a></li>
     </ul>
     <div class="userarea">
-      <a href="/" class="search">
+      <div class="search">
         <img src="/assets/search.svg" alt="search button" />
-      </a>
+      </div>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder="Search"
+        class="search-input"
+      />
+
       <a href="/" class="profile">
         <img src="/assets/profile.svg" alt="profile button" />
       </a>
@@ -69,6 +77,10 @@ const data = await fetch(
     align-items: center;
   }
 
+  .logo {
+    z-index: 1;
+  }
+
   .topnav {
     list-style: none;
     display: flex;
@@ -76,6 +88,7 @@ const data = await fetch(
     grid-column: 2;
     padding: 0 6rem;
     justify-content: space-around;
+    z-index: 1;
   }
 
   a {
@@ -106,6 +119,17 @@ const data = await fetch(
       brightness(89%) contrast(91%);
   }
 
+  .search-input {
+    display: none;
+  }
+  .search-input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-accent);
+  }
+
   .storenav {
     padding: 2rem 0 0;
     grid-row: 2;
@@ -120,6 +144,7 @@ const data = await fetch(
       grid-template-columns: 1fr 1fr;
     }
     .top {
+      grid-column: 1/-1;
       display: grid;
 
       grid-template-columns: 1fr 4fr 1fr;
@@ -128,7 +153,9 @@ const data = await fetch(
 
     .topnav {
       grid-row: 1;
-
+      padding: 0 1em 0 4vw;
+      text-align: center;
+      gap: 1vw;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -138,6 +165,7 @@ const data = await fetch(
       grid-row: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       justify-items: end;
       align-items: center;
       height: 24px;
@@ -146,8 +174,17 @@ const data = await fetch(
 
     .search {
       grid-row: 2;
-      grid-column: 1;
+      grid-column: 1/-4;
       justify-self: start;
+      padding: 1em 0 0 1em;
+      align-self: center;
+    }
+    .search-input {
+      display: block;
+      grid-column: 1/4;
+      grid-row: 2;
+      width: 100%;
+      margin: 1em 0 0;
     }
 
     .basket {
@@ -157,7 +194,7 @@ const data = await fetch(
 
     .profile {
       grid-row: 1;
-      grid-column: 2/3;
+      grid-column: 2/-1;
     }
 
     .logo {
@@ -189,6 +226,8 @@ const data = await fetch(
       display: inline-flex;
       align-items: center;
       justify-content: end;
+      position: relative;
+      padding: 0 0.5em;
     }
 
     .menu-btn {
@@ -204,9 +243,9 @@ const data = await fetch(
     }
 
     .line {
-      background-color: rgb(0, 0, 0);
+      background-color: var(--secondary-color);
       width: 32px;
-      height: 1.2px;
+      height: 1.5px;
       border-radius: 4px;
       position: absolute;
       top: 50%;
@@ -222,41 +261,45 @@ const data = await fetch(
       top: calc(50% + 9px);
     }
 
-    .menu-btn.active {
-      position: fixed;
-    }
-
-    /* when menu is open  */
+    /* when menu is open  - DARK COLOR*/
     .menu-btn.active .line:nth-of-type(1) {
       top: 50%;
       transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--secondary-color);
     }
 
     .menu-btn.active .line:nth-of-type(2) {
       top: 50%;
       transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--secondary-color);
     }
 
     .menu-btn.active .line:nth-of-type(3) {
       top: 50%;
       transform: translate(-50%, 0%) rotate(-45deg);
+      background-color: var(--secondary-color);
     }
 
     /* Actual menu that appears  */
-    .storenav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      transform: translateY(-100%);
+    .store,
+    .topnav {
+      display: none; /* Initially hidden for smaller screens */
       transition: transform 0.5s;
     }
 
     .store.active {
-      transform: translateX(0);
+      transform: translateY(3rem);
+      display: block;
     }
+    .store {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      transform: translateY(-100%);
+    }
+
     /* menu list styling  */
     ul {
       list-style: none;
@@ -272,12 +315,69 @@ const data = await fetch(
     }
   }
 
-  @media (max-width: 750px) {
-    .topnav {
-      grid-row: 1;
+  /* Smallest screen */
+  /* this is where the topnav (pre order, reparation, om os etc) become buttons */
 
+  @media (max-width: 750px) {
+    /* when menu is open - WHITE COLOUR */
+    .menu-btn.active .line:nth-of-type(1) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--primary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(2) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--primary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(3) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(-45deg);
+      background-color: var(--primary-color);
+    }
+
+    .store.active {
+      transform: translateY(10rem);
+    }
+
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;
+      gap: 0;
+      z-index: 3;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+      background-color: var(--hover-color);
       display: grid;
-      grid-template-columns: 1fr 1fr ;
+      grid-template-columns: 1fr 1fr;
+      outline: 1px solid var(--primary-color);
+    }
+
+    .topnav li {
+      text-align: center;
+      width: 100%;
+      outline: 0.5px solid var(--primary-color);
+      height: 6rem;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .topnav li a {
+      align-self: center;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .topnav li:hover {
+      background-color: var(--secondary-accent);
+    }
+
+    .topnav.active {
+      transform: translateX(0);
     }
   }
 </style>
@@ -286,9 +386,11 @@ const data = await fetch(
   // use this code for activating the global-menu
   let menuBtn = document.querySelector(".menu-btn");
   let store = document.querySelector(".store");
+  let topNav = document.querySelector(".topnav");
 
   menuBtn.addEventListener("click", function () {
     menuBtn.classList.toggle("active");
     store.classList.toggle("active");
+    topNav.classList.toggle("active");
   });
 </script>

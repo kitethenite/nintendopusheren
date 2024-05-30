@@ -16,7 +16,7 @@ const subcategories = await fetch(
 ---
 
 <ul class="dropdown">
-  <li>
+  <li class="category-container">
     <div class="category">
       <p>{data.category}</p>
     </div>
@@ -51,6 +51,7 @@ const subcategories = await fetch(
     display: grid;
     align-items: center;
     gap: 2em;
+    cursor: pointer;
   }
 
   .category:hover {
@@ -67,14 +68,61 @@ const subcategories = await fetch(
     color: var(--primary-color);
   }
 
+  ul li:hover > ul {
+    display: inherit;
+  }
+
   @media (max-width: 860px) {
     ul,
     li .category {
       max-width: 100%;
+      outline: 1px solid var(--primary-color);
     }
 
     .category {
+      height: 4rem;
+      
+    }
+
+    .subcategories {
+      width: 100%;
+    }
+    .subcategory {
+      width: 100%;
+      z-index: 1;
+      margin: 0 auto;
+      padding: 0;
       outline: 1px solid black;
+      position: relative;
+    }
+
+    ul ul {
+      position: absolute;
+      display: none;
+    }
+
+    ul li.show > ul {
+      display: block;
+    }
+
+    .subcategories {
+      display: none;
+    }
+
+    .subcategories.show,
+    .subcategories.active {
+      display: block;
+    }
+    .category:hover {
+      background-color: var(--secondary-accent);
+      outline: 1px solid black;
+    }
+    .category.show {
+      background-color: var(--hover-color);
+    }
+
+    .subcategories {
+      text-align: center;
     }
   }
   /******** STYLING SUBCATEGORIES *********/
@@ -96,15 +144,52 @@ const subcategories = await fetch(
     display: none;
   }
 
-  ul li:hover > ul {
-    display: inherit;
+  ul li.show > ul {
+    display: block;
   }
 
+  .subcategories {
+    display: none;
+  }
+
+  .subcategories.show,
+  .subcategories.active {
+    display: block;
+  }
   /* mobile dynamic  */
-
-  @media (max-width: 860px) {
-    .subcategories {
-      text-align: center;
-    }
-  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryContainers = document.querySelectorAll(".category-container");
+
+    categoryContainers.forEach((container) => {
+      const category = container.querySelector(".category");
+      const subcategoryList = container.querySelector(".subcategories");
+
+      category.addEventListener("click", () => {
+        subcategoryList.classList.toggle("show");
+      });
+    });
+  });
+</script>
+
+<!-- document.addEventListener("DOMContentLoaded", () => {
+  const tilføjKnap = document.querySelector(".Tilføj");
+  const tilføjetKnap = document.querySelector(".tilføjet");
+
+  tilføjKnap.addEventListener("click", () => {
+    tilføjKnap.style.display = "none";
+    tilføjetKnap.style.display = "block";
+    tilføjetKnap.classList.add("rød");
+  });
+
+  tilføjetKnap.addEventListener("click", () => {
+    tilføjetKnap.style.display = "none";
+    tilføjKnap.style.display = "block";
+  });
+}); -->
+<!-- 
+/* ul li:hover > ul {
+  display: inherit;
+} */ -->
