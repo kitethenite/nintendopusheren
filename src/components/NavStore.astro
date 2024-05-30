@@ -55,9 +55,7 @@ const subcategories = await fetch(
 
   .category:hover {
     background-color: var(--hover-color);
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    outline: 1px solid black;
   }
 
   .category:active {
@@ -69,6 +67,16 @@ const subcategories = await fetch(
     color: var(--primary-color);
   }
 
+  @media (max-width: 860px) {
+    ul,
+    li .category {
+      max-width: 100%;
+    }
+
+    .category {
+      outline: 1px solid black;
+    }
+  }
   /******** STYLING SUBCATEGORIES *********/
 
   .subcategories {
@@ -79,14 +87,8 @@ const subcategories = await fetch(
     z-index: 1;
     margin: 0 auto;
     padding: 0;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    outline: 1px solid black;
     position: relative;
-  }
-
-  .subcategory:first-child {
-    border-top: 1px solid black;
   }
 
   ul ul {
@@ -100,13 +102,9 @@ const subcategories = await fetch(
 
   /* mobile dynamic  */
 
-  /* @media (max-width: 1000px) {
-    ul,
-    li .category {
-      list-style: none;
-      position: relative;
-      max-width: 160px;
-      width: 100%;
+  @media (max-width: 860px) {
+    .subcategories {
+      text-align: center;
     }
-  } */
+  }
 </style>

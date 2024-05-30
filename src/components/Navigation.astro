@@ -1,5 +1,6 @@
 ---
 import NavStore from "./NavStore.astro";
+
 const data = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/categories?order=id.asc",
   {
@@ -13,6 +14,13 @@ const data = await fetch(
 ---
 
 <nav>
+  <div class="burgermenu">
+    <div class="menu-btn">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
   <div class="top">
     <div class="logo">
       <a href="/"><img src="/assets/logo.svg" alt="logo" /></a>
@@ -25,24 +33,26 @@ const data = await fetch(
       <li><a href="/about">Om os</a></li>
     </ul>
     <div class="userarea">
-      <a href="">
-        <img src="/assets/search.svg" alt="search button" class="search" />
+      <a href="/" class="search">
+        <img src="/assets/search.svg" alt="search button" />
       </a>
-      <a href="">
+      <a href="/" class="profile">
         <img src="/assets/profile.svg" alt="profile button" />
       </a>
-      <a href="">
+      <a href="/" class="basket">
         <img src="/assets/basket.svg" alt="shopping basket button" />
       </a>
     </div>
   </div>
 
-  <div class="storenav">
-    {
-      data.map((data) => {
-        return <NavStore data={data} />;
-      })
-    }
+  <div class="store">
+    <div class="storenav">
+      {
+        data.map((data) => {
+          return <NavStore data={data} />;
+        })
+      }
+    </div>
   </div>
 </nav>
 
@@ -54,7 +64,6 @@ const data = await fetch(
     grid-template-columns: 1fr;
   }
   .top {
-    grid-row: 1;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
@@ -72,7 +81,6 @@ const data = await fetch(
   a {
     text-decoration: none;
     font-size: var(--font-size-md);
-
     color: var(--secondary-color);
     letter-spacing: 0.5px;
   }
@@ -106,42 +114,181 @@ const data = await fetch(
     gap: 2em;
   }
 
-  /* @media (max-width: 1000px) {
-    .top {
-      grid-row: 1;
+  @media (max-width: 860px) {
+    nav {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+    .top {
+      display: grid;
+
+      grid-template-columns: 1fr 4fr 1fr;
       align-items: center;
     }
 
     .topnav {
-      grid-row: 2;
-      grid-column: 1/-1;
+      grid-row: 1;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .userarea {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: end;
-    align-items: center;
-    height: 24px;
-  }
-
-  .search {
-    grid-row: 2;
-    grid-column: 1/2;
-    justify-items: start;
-
-  }
-
-    .storenav {
+      grid-column: 1/-1;
       grid-row: 1;
-      align-self: start;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: end;
+      align-items: center;
+      height: 24px;
+      gap: 1em;
+    }
 
+    .search {
+      grid-row: 2;
+      grid-column: 1;
+      justify-self: start;
+    }
 
-      /* grid-row: 2; */
+    .basket {
+      grid-row: 1;
+      grid-column: 3/-1;
+    }
+
+    .profile {
+      grid-row: 1;
+      grid-column: 2/3;
+    }
+
+    .logo {
+      grid-row: 1;
+      grid-column: 1/2;
+    }
+
+    .store {
       display: grid;
       grid-template-columns: 1fr;
+      grid-row: 2;
+      grid-column: 1/-1;
+      align-self: center;
     }
-  } */
+
+    .storenav {
+      grid-column: 1/-1;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    /* burgermenu  */
+
+    .burgermenu {
+      grid-column: 3/-1;
+      grid-row: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: end;
+    }
+
+    .menu-btn {
+      width: 44px;
+      height: 32px;
+      position: relative;
+      overflow: hidden;
+      z-index: 9;
+    }
+
+    .menu-btn:hover {
+      cursor: pointer;
+    }
+
+    .line {
+      background-color: rgb(0, 0, 0);
+      width: 32px;
+      height: 1.2px;
+      border-radius: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .line:nth-of-type(2) {
+      top: calc(50% - 9px);
+    }
+    .line:nth-of-type(3) {
+      top: calc(50% + 9px);
+    }
+
+    .menu-btn.active {
+      position: fixed;
+    }
+
+    /* when menu is open  */
+    .menu-btn.active .line:nth-of-type(1) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+    }
+
+    .menu-btn.active .line:nth-of-type(2) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+    }
+
+    .menu-btn.active .line:nth-of-type(3) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(-45deg);
+    }
+
+    /* Actual menu that appears  */
+    .storenav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+    }
+
+    .store.active {
+      transform: translateX(0);
+    }
+    /* menu list styling  */
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    ul li ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      position: absolute;
+      top: 30%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .topnav {
+      grid-row: 1;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr ;
+    }
+  }
 </style>
+
+<script>
+  // use this code for activating the global-menu
+  let menuBtn = document.querySelector(".menu-btn");
+  let store = document.querySelector(".store");
+
+  menuBtn.addEventListener("click", function () {
+    menuBtn.classList.toggle("active");
+    store.classList.toggle("active");
+  });
+</script>
