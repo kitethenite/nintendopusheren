@@ -29,7 +29,8 @@ const items = await fetch(
 <style>
   /******** STYLING SUBCATEGORIES *********/
 
-  .subcategory, a {
+  .subcategory,
+  a {
     text-decoration: none;
     color: var(--primary-color);
     display: block;
@@ -44,7 +45,8 @@ const items = await fetch(
     font-weight: var(--font-weight-light);
   }
 
-  .subcategory:hover, a:hover {
+  .subcategory:hover,
+  a:hover {
     background-color: var(--secondary-accent);
   }
 
@@ -52,8 +54,8 @@ const items = await fetch(
 
   .items {
     list-style: none;
-    position: absolute; 
-    left: 100%; 
+    position: absolute;
+    left: 100%;
     z-index: 2;
     top: -1px;
     display: none;
@@ -61,26 +63,24 @@ const items = await fetch(
   }
 
   .items li {
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-
-    border-bottom: 1px solid black;
-
+    outline: 1px solid black;
   }
-  .items li:first-child {
-    border-top: 1px solid black;
-  }
-
   /* the plus means that when a.subcategory is being hovered, it's adjacent sibling, which is div.item, will also inherit the display */
   .subcategory:hover + .items {
     display: inherit;
   }
 
-  .items:hover{
+  .items:hover,
+  .items:active {
     display: block;
   }
 
-
+  @media (max-width: 860px) {
+   
+    .subcategory:hover + .items {
+      display: none;
+    }
+  }
 
   /****** hierarkin på denna är ul.items > li > a */
 </style>

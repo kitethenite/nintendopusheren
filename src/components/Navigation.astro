@@ -1,5 +1,6 @@
 ---
 import NavStore from "./NavStore.astro";
+
 const data = await fetch(
   "https://thryhwcrvlzlnuucxhqk.supabase.co/rest/v1/categories?order=id.asc",
   {
@@ -13,6 +14,13 @@ const data = await fetch(
 ---
 
 <nav>
+  <div class="burgermenu">
+    <div class="menu-btn">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
   <div class="top">
     <div class="logo">
       <a href="/"><img src="/assets/logo.svg" alt="logo" /></a>
@@ -25,24 +33,34 @@ const data = await fetch(
       <li><a href="/about">Om os</a></li>
     </ul>
     <div class="userarea">
-      <a href="">
-        <img src="/assets/search.svg" alt="search button" class="search" />
-      </a>
-      <a href="">
+      <div class="search">
+        <img src="/assets/search.svg" alt="search button" />
+      </div>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder="Search"
+        class="search-input"
+      />
+
+      <a href="/" class="profile">
         <img src="/assets/profile.svg" alt="profile button" />
       </a>
-      <a href="">
+      <a href="/" class="basket">
         <img src="/assets/basket.svg" alt="shopping basket button" />
       </a>
     </div>
   </div>
 
-  <div class="storenav">
-    {
-      data.map((data) => {
-        return <NavStore data={data} />;
-      })
-    }
+  <div class="store">
+    <div class="storenav">
+      {
+        data.map((data) => {
+          return <NavStore data={data} />;
+        })
+      }
+    </div>
   </div>
 </nav>
 
@@ -54,10 +72,13 @@ const data = await fetch(
     grid-template-columns: 1fr;
   }
   .top {
-    grid-row: 1;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
+  }
+
+  .logo {
+    z-index: 1;
   }
 
   .topnav {
@@ -67,12 +88,12 @@ const data = await fetch(
     grid-column: 2;
     padding: 0 6rem;
     justify-content: space-around;
+    z-index: 1;
   }
 
   a {
     text-decoration: none;
     font-size: var(--font-size-md);
-
     color: var(--secondary-color);
     letter-spacing: 0.5px;
   }
@@ -98,6 +119,17 @@ const data = await fetch(
       brightness(89%) contrast(91%);
   }
 
+  .search-input {
+    display: none;
+  }
+  .search-input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-accent);
+  }
+
   .storenav {
     padding: 2rem 0 0;
     grid-row: 2;
@@ -106,42 +138,269 @@ const data = await fetch(
     gap: 2em;
   }
 
-  /* @media (max-width: 1000px) {
-    .top {
-      grid-row: 1;
+  @media (max-width: 860px) {
+    nav {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+    .top {
+      grid-column: 1/-1;
+      display: grid;
+
+      grid-template-columns: 1fr 4fr 1fr;
       align-items: center;
     }
 
     .topnav {
-      grid-row: 2;
-      grid-column: 1/-1;
+      grid-row: 1;
+      padding: 0 1em 0 4vw;
+      text-align: center;
+      gap: 1vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .userarea {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: end;
-    align-items: center;
-    height: 24px;
-  }
+      grid-column: 1/-1;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-items: end;
+      align-items: center;
+      height: 24px;
+      gap: 1em;
+    }
 
-  .search {
-    grid-row: 2;
-    grid-column: 1/2;
-    justify-items: start;
+    .search {
+      grid-row: 2;
+      grid-column: 1/-4;
+      justify-self: start;
+      padding: 1em 0 0 1em;
+      align-self: center;
+    }
+    .search-input {
+      display: block;
+      grid-column: 1/4;
+      grid-row: 2;
+      width: 100%;
+      margin: 1em 0 0;
+    }
 
-  }
+    .basket {
+      grid-row: 1;
+      grid-column: 3/-1;
+    }
+
+    .profile {
+      grid-row: 1;
+      grid-column: 2/-1;
+    }
+
+    .logo {
+      grid-row: 1;
+      grid-column: 1/2;
+    }
+
+    .store {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row: 2;
+      grid-column: 1/-1;
+      align-self: center;
+    }
 
     .storenav {
+      grid-column: 1/-1;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    /* burgermenu  */
+
+    .burgermenu {
+      grid-column: 3/-1;
       grid-row: 1;
-      align-self: start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: end;
+      position: relative;
+      padding: 0 0.5em;
+    }
 
+    .menu-btn {
+      width: 44px;
+      height: 32px;
+      position: relative;
+      overflow: hidden;
+      z-index: 9;
+    }
 
-      /* grid-row: 2; */
+    .menu-btn:hover {
+      cursor: pointer;
+    }
+
+    .line {
+      background-color: var(--secondary-color);
+      width: 32px;
+      height: 1.5px;
+      border-radius: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .line:nth-of-type(2) {
+      top: calc(50% - 9px);
+    }
+    .line:nth-of-type(3) {
+      top: calc(50% + 9px);
+    }
+
+    /* when menu is open  - DARK COLOR*/
+    .menu-btn.active .line:nth-of-type(1) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--secondary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(2) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--secondary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(3) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(-45deg);
+      background-color: var(--secondary-color);
+    }
+
+    /* Actual menu that appears  */
+
+    /* This makes the menu not flash when minimizing screen, but i cannot make it work with all the animation :( */
+
+    /* .store,
+    .topnav {
+      display: none; 
+      transition: transform 0.5s;
+    } */
+
+    .store.active {
+      transform: translateY(3rem);
+      display: block;
+    }
+    .store {
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* menu list styling  */
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    ul li ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      position: absolute;
+      top: 30%;
+    }
+  }
+
+  /* Smallest screen */
+  /* this is where the topnav (pre order, reparation, om os etc) become buttons */
+
+  @media (max-width: 750px) {
+    /* when menu is open - WHITE COLOUR */
+    .menu-btn.active .line:nth-of-type(1) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--primary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(2) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(45deg);
+      background-color: var(--primary-color);
+    }
+
+    .menu-btn.active .line:nth-of-type(3) {
+      top: 50%;
+      transform: translate(-50%, 0%) rotate(-45deg);
+      background-color: var(--primary-color);
+    }
+
+    .store.active {
+      transform: translateY(10rem);
+    }
+
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;
+      gap: 0;
+      z-index: 3;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+      background-color: var(--hover-color);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      outline: 1px solid var(--primary-color);
+    }
+
+    .topnav li {
+      text-align: center;
+      width: 100%;
+      outline: 0.5px solid var(--primary-color);
+      height: 6rem;
       display: grid;
       grid-template-columns: 1fr;
     }
-  } */
+    .topnav li a {
+      align-self: center;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .topnav li:hover {
+      background-color: var(--secondary-accent);
+    }
+
+    .topnav.active {
+      transform: translateX(0);
+    }
+  }
 </style>
+
+<script>
+  // use this code for activating the global-menu
+  let menuBtn = document.querySelector(".menu-btn");
+  let store = document.querySelector(".store");
+  let topNav = document.querySelector(".topnav");
+
+  menuBtn.addEventListener("click", function () {
+    menuBtn.classList.toggle("active");
+    store.classList.toggle("active");
+    topNav.classList.toggle("active");
+  });
+
+
+  
+</script>

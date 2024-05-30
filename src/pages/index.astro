@@ -3,10 +3,17 @@ import MainLayout from "../layouts/MainLayout.astro";
 import HeroimageIndex from "../components/HeroimageIndex.astro";
 import LuigiMansion2 from "../components/LuigiMansion2.astro";
 import PaperMario from "../components/PaperMario.astro";
-
 ---
-<MainLayout>
-	<HeroimageIndex/>
-	<LuigiMansion2/>
-	<PaperMario/>
+
+<MainLayout headliner="Nintendopusheren">
+  <HeroimageIndex />
+  <h1>Nyheder</h1>
+  <LuigiMansion2 />
+  <PaperMario />
 </MainLayout>
+<style>
+  h1 {
+    text-align: center;
+	padding: 0 0 5rem;
+  }
+</style>
