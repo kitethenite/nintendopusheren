@@ -56,7 +56,7 @@ const subcategories = await fetch(
 
   .category:hover {
     background-color: var(--hover-color);
-    outline: 1px solid black;
+    /* outline: 1px solid black; */
   }
 
   .category:active {
@@ -72,59 +72,6 @@ const subcategories = await fetch(
     display: inherit;
   }
 
-  @media (max-width: 860px) {
-    ul,
-    li .category {
-      max-width: 100%;
-      outline: 1px solid var(--primary-color);
-    }
-
-    .category {
-      height: 4rem;
-      
-    }
-
-    .subcategories {
-      width: 100%;
-    }
-    .subcategory {
-      width: 100%;
-      z-index: 1;
-      margin: 0 auto;
-      padding: 0;
-      outline: 1px solid black;
-      position: relative;
-    }
-
-    ul ul {
-      position: absolute;
-      display: none;
-    }
-
-    ul li.show > ul {
-      display: block;
-    }
-
-    .subcategories {
-      display: none;
-    }
-
-    .subcategories.show,
-    .subcategories.active {
-      display: block;
-    }
-    .category:hover {
-      background-color: var(--secondary-accent);
-      outline: 1px solid black;
-    }
-    .category.show {
-      background-color: var(--hover-color);
-    }
-
-    .subcategories {
-      text-align: center;
-    }
-  }
   /******** STYLING SUBCATEGORIES *********/
 
   .subcategories {
@@ -135,27 +82,91 @@ const subcategories = await fetch(
     z-index: 1;
     margin: 0 auto;
     padding: 0;
-    outline: 1px solid black;
+    /* outline: 1px solid black; THIS WORKS BETTER THAN BORDER but it also makes the items irregular and i don't have time to work it out in time */
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     position: relative;
+  }
+  .subcategory:first-child {
+    border-top: 1px solid black;
   }
 
   ul ul {
     position: absolute;
     display: none;
   }
-
-  ul li.show > ul {
-    display: block;
+  ul li:hover > ul {
+    display: inherit;
   }
-
   .subcategories {
     display: none;
   }
 
-  .subcategories.show,
-  .subcategories.active {
+  @media (max-width: 860px) {
+    ul,
+    li .category {
+      max-width: 100%;
+      outline: 1px solid var(--primary-color);
+    }
+    ul li:hover > ul {
+      display: none;
+    }
+    ul li:active > ul {
+      display: block;
+    }
+
+    .category {
+      height: 4rem;
+    }
+
+    .subcategories {
+      width: 100%;
+    }
+    .subcategory {
+      width: 100%;
+      z-index: 1;
+      margin: 0 auto;
+      padding: 0;
+      /* outline: 1px solid black; */
+      position: relative;
+    }
+
+    ul ul {
+      position: absolute;
+      display: none;
+    }
+
+    ul li.show > ul,
+    ul li:active > ul {
+      display: block;
+    }
+
+    .subcategories.show,
+    .subcategories:active {
+      display: block;
+    }
+    .category:active {
+      background-color: var(--secondary-accent);
+      /* outline: 1px solid black; */
+    }
+    .category.show {
+      background-color: var(--hover-color);
+    }
+
+    .subcategories {
+      text-align: center;
+    }
+
+    ul li.show > ul {
     display: block;
   }
+
+  .category-container.show .subcategories {
+    display: block;
+  }
+  }
+
   /* mobile dynamic  */
 </style>
 
@@ -165,31 +176,10 @@ const subcategories = await fetch(
 
     categoryContainers.forEach((container) => {
       const category = container.querySelector(".category");
-      const subcategoryList = container.querySelector(".subcategories");
 
       category.addEventListener("click", () => {
-        subcategoryList.classList.toggle("show");
+        container.classList.toggle("show");
       });
     });
   });
 </script>
-
-<!-- document.addEventListener("DOMContentLoaded", () => {
-  const tilføjKnap = document.querySelector(".Tilføj");
-  const tilføjetKnap = document.querySelector(".tilføjet");
-
-  tilføjKnap.addEventListener("click", () => {
-    tilføjKnap.style.display = "none";
-    tilføjetKnap.style.display = "block";
-    tilføjetKnap.classList.add("rød");
-  });
-
-  tilføjetKnap.addEventListener("click", () => {
-    tilføjetKnap.style.display = "none";
-    tilføjKnap.style.display = "block";
-  });
-}); -->
-<!-- 
-/* ul li:hover > ul {
-  display: inherit;
-} */ -->

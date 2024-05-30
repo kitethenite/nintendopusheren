@@ -295,16 +295,13 @@ const data = await fetch(
       display: block;
     }
     .store {
-      transform: translateY(-100%);
-      transition: transform 0.5s;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 2;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
     }
 
     /* menu list styling  */
@@ -400,7 +397,4 @@ const data = await fetch(
     store.classList.toggle("active");
     topNav.classList.toggle("active");
   });
-
-
-  
 </script>
