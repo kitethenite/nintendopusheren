@@ -75,19 +75,10 @@ const items = await fetch(
     display: block;
   }
 
-  @media (max-width: 750px) {
-    .items {
-      list-style: none;
-      position: absolute;
-      left: 0;
-      z-index: 2;
-      top: -1px;
-      display: none;
-      width: 100%;
-    }
-
+  @media (max-width: 860px) {
+   
     .subcategory:hover + .items {
-      display: inherit;
+      display: none;
     }
   }
 
